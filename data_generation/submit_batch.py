@@ -15,7 +15,7 @@ def make_request(cluster_data, combo, doc_index):
         "custom_id": custom_id,
         "params": {
             "model": MODEL,
-            "max_tokens": 1400,
+            "max_tokens": 2048,
             "temperature": 1.0,
             "system": SYSTEM_PROMPT,
             "messages": [{"role": "user", "content": build_user_prompt(cluster_data, combo, doc_index)}]
@@ -62,15 +62,46 @@ def submit_fullgen(cluster_label: str):
 
     print(f"All batch IDs saved to {id_file}")
 
+def submit_pilot_retry(cluster_label: str):
+    """Resubmit only the pilot docs that failed (not in parsed output)."""
+    import json as _json
+    cluster_num = {v: k for k, v in CLUSTER_MAP.items()}[cluster_label]
+    cluster_data = load_cluster_values(cluster_num)
+    combos = pd.read_csv(f"data/combinations/{cluster_label}_combinations.csv")
+    combo_lookup = {int(row["combo_idx"]): row for _, row in combos.iterrows()}
+
+    parsed_ids = set()
+    parsed_path = f"data/output/{cluster_label}_pilot.jsonl"
+    with open(parsed_path) as f:
+        for line in f:
+            parsed_ids.add(_json.loads(line)["custom_id"])
+
+    retry_combos = []
+    for _, row in combos.iterrows():
+        cid = f"{cluster_label}_c{int(row['combo_idx']):03d}_d001"
+        if cid not in parsed_ids:
+            retry_combos.append(row)
+
+    requests = [make_request(cluster_data, row, doc_index=1) for row in retry_combos]
+    print(f"Retrying {len(requests)} truncated pilot docs for {cluster_label}...")
+
+    batch = client.messages.batches.create(requests=requests)
+    id_file = f"data/output/{cluster_label}_pilot_retry_batch_id.txt"
+    Path(id_file).write_text(batch.id)
+    print(f"Batch ID: {batch.id} → saved to {id_file}")
+
 if __name__ == "__main__":
     # Usage:
     #   python submit_batch.py k1 pilot
+    #   python submit_batch.py k1 pilot_retry
     #   python submit_batch.py k1 fullgen
     cluster_label = sys.argv[1]
     mode = sys.argv[2]
     if mode == "pilot":
         submit_pilot(cluster_label)
+    elif mode == "pilot_retry":
+        submit_pilot_retry(cluster_label)
     elif mode == "fullgen":
         submit_fullgen(cluster_label)
     else:
-        print("Mode must be 'pilot' or 'fullgen'")
+        print("Mode must be 'pilot', 'pilot_retry', or 'fullgen'")

@@ -1,0 +1,5 @@
+anthropic==0.109.2
+tiktoken
+pandas
+huggingface_hub
+datasets

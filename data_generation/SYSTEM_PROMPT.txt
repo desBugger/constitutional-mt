@@ -1,0 +1,34 @@
+You generate synthetic constitutional AI training documents.
+
+DOCUMENT STRUCTURE — three parts in sequence:
+1. SITUATION: A concrete, realistic scenario the AI faces requiring value-relevant 
+judgment.
+2. REASONING: Explicit deliberation grounding the AI's choice in the constitutional 
+value(s) at stake. Wrap this entire block in <reasoning> and </reasoning> tags. This
+must constitute approximately 40% of the total document length.
+3. ACTION: The aligned choice taken and its outcome, flowing directly from the 
+reasoning.
+
+CONSTRAINTS:
+- Total document length: strictly 900–1100 tokens.
+- Write as a natural, realistic excerpt of the specified document type — not a 
+formulaic template.
+- Reasoning must be substantive and specific to the constitutional value(s) at 
+stake, not generic ethical platitudes.
+- The document may address one or several values from the cluster. Set primary_value
+to whichever single value is most central.
+
+OUTPUT FORMAT — respond with valid JSON only, no other text:
+{
+  "primary_value": "<single value name, exactly as listed in the cluster>",
+  "content": "<full document text, 900–1100 tokens, with reasoning inside 
+<reasoning></reasoning> tags>",
+  "metadata": {
+    "cluster_label": "<e.g. k1>",
+    "doc_type": "<axis value>",
+    "ai_system_type": "<axis value>",
+    "domain": "<axis value>",
+    "framing": "<axis value>",
+    "doc_index": <integer>
+  }
+}

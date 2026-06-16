@@ -1,0 +1,631 @@
+combo_idx,doc_type,ai_system_type,domain,framing
+0,research paper excerpt,assistant,medical,first-person AI
+1,research paper excerpt,assistant,medical,third-person narrative
+2,research paper excerpt,assistant,medical,human dialogue about AI
+3,research paper excerpt,assistant,legal,first-person AI
+4,research paper excerpt,assistant,legal,third-person narrative
+5,research paper excerpt,assistant,legal,human dialogue about AI
+6,research paper excerpt,assistant,financial,first-person AI
+7,research paper excerpt,assistant,financial,third-person narrative
+8,research paper excerpt,assistant,financial,human dialogue about AI
+9,research paper excerpt,assistant,political,first-person AI
+10,research paper excerpt,assistant,political,third-person narrative
+11,research paper excerpt,assistant,political,human dialogue about AI
+12,research paper excerpt,assistant,personal,first-person AI
+13,research paper excerpt,assistant,personal,third-person narrative
+14,research paper excerpt,assistant,personal,human dialogue about AI
+15,research paper excerpt,assistant,scientific,first-person AI
+16,research paper excerpt,assistant,scientific,third-person narrative
+17,research paper excerpt,assistant,scientific,human dialogue about AI
+18,research paper excerpt,assistant,creative,first-person AI
+19,research paper excerpt,assistant,creative,third-person narrative
+20,research paper excerpt,assistant,creative,human dialogue about AI
+21,research paper excerpt,autonomous agent,medical,first-person AI
+22,research paper excerpt,autonomous agent,medical,third-person narrative
+23,research paper excerpt,autonomous agent,medical,human dialogue about AI
+24,research paper excerpt,autonomous agent,legal,first-person AI
+25,research paper excerpt,autonomous agent,legal,third-person narrative
+26,research paper excerpt,autonomous agent,legal,human dialogue about AI
+27,research paper excerpt,autonomous agent,financial,first-person AI
+28,research paper excerpt,autonomous agent,financial,third-person narrative
+29,research paper excerpt,autonomous agent,financial,human dialogue about AI
+30,research paper excerpt,autonomous agent,political,first-person AI
+31,research paper excerpt,autonomous agent,political,third-person narrative
+32,research paper excerpt,autonomous agent,political,human dialogue about AI
+33,research paper excerpt,autonomous agent,personal,first-person AI
+34,research paper excerpt,autonomous agent,personal,third-person narrative
+35,research paper excerpt,autonomous agent,personal,human dialogue about AI
+36,research paper excerpt,autonomous agent,scientific,first-person AI
+37,research paper excerpt,autonomous agent,scientific,third-person narrative
+38,research paper excerpt,autonomous agent,scientific,human dialogue about AI
+39,research paper excerpt,autonomous agent,creative,first-person AI
+40,research paper excerpt,autonomous agent,creative,third-person narrative
+41,research paper excerpt,autonomous agent,creative,human dialogue about AI
+42,research paper excerpt,robotic system,medical,first-person AI
+43,research paper excerpt,robotic system,medical,third-person narrative
+44,research paper excerpt,robotic system,medical,human dialogue about AI
+45,research paper excerpt,robotic system,legal,first-person AI
+46,research paper excerpt,robotic system,legal,third-person narrative
+47,research paper excerpt,robotic system,legal,human dialogue about AI
+48,research paper excerpt,robotic system,financial,first-person AI
+49,research paper excerpt,robotic system,financial,third-person narrative
+50,research paper excerpt,robotic system,financial,human dialogue about AI
+51,research paper excerpt,robotic system,political,first-person AI
+52,research paper excerpt,robotic system,political,third-person narrative
+53,research paper excerpt,robotic system,political,human dialogue about AI
+54,research paper excerpt,robotic system,personal,first-person AI
+55,research paper excerpt,robotic system,personal,third-person narrative
+56,research paper excerpt,robotic system,personal,human dialogue about AI
+57,research paper excerpt,robotic system,scientific,first-person AI
+58,research paper excerpt,robotic system,scientific,third-person narrative
+59,research paper excerpt,robotic system,scientific,human dialogue about AI
+60,research paper excerpt,robotic system,creative,first-person AI
+61,research paper excerpt,robotic system,creative,third-person narrative
+62,research paper excerpt,robotic system,creative,human dialogue about AI
+63,research paper excerpt,recommendation system,medical,first-person AI
+64,research paper excerpt,recommendation system,medical,third-person narrative
+65,research paper excerpt,recommendation system,medical,human dialogue about AI
+66,research paper excerpt,recommendation system,legal,first-person AI
+67,research paper excerpt,recommendation system,legal,third-person narrative
+68,research paper excerpt,recommendation system,legal,human dialogue about AI
+69,research paper excerpt,recommendation system,financial,first-person AI
+70,research paper excerpt,recommendation system,financial,third-person narrative
+71,research paper excerpt,recommendation system,financial,human dialogue about AI
+72,research paper excerpt,recommendation system,political,first-person AI
+73,research paper excerpt,recommendation system,political,third-person narrative
+74,research paper excerpt,recommendation system,political,human dialogue about AI
+75,research paper excerpt,recommendation system,personal,first-person AI
+76,research paper excerpt,recommendation system,personal,third-person narrative
+77,research paper excerpt,recommendation system,personal,human dialogue about AI
+78,research paper excerpt,recommendation system,scientific,first-person AI
+79,research paper excerpt,recommendation system,scientific,third-person narrative
+80,research paper excerpt,recommendation system,scientific,human dialogue about AI
+81,research paper excerpt,recommendation system,creative,first-person AI
+82,research paper excerpt,recommendation system,creative,third-person narrative
+83,research paper excerpt,recommendation system,creative,human dialogue about AI
+84,research paper excerpt,content moderation system,medical,first-person AI
+85,research paper excerpt,content moderation system,medical,third-person narrative
+86,research paper excerpt,content moderation system,medical,human dialogue about AI
+87,research paper excerpt,content moderation system,legal,first-person AI
+88,research paper excerpt,content moderation system,legal,third-person narrative
+89,research paper excerpt,content moderation system,legal,human dialogue about AI
+90,research paper excerpt,content moderation system,financial,first-person AI
+91,research paper excerpt,content moderation system,financial,third-person narrative
+92,research paper excerpt,content moderation system,financial,human dialogue about AI
+93,research paper excerpt,content moderation system,political,first-person AI
+94,research paper excerpt,content moderation system,political,third-person narrative
+95,research paper excerpt,content moderation system,political,human dialogue about AI
+96,research paper excerpt,content moderation system,personal,first-person AI
+97,research paper excerpt,content moderation system,personal,third-person narrative
+98,research paper excerpt,content moderation system,personal,human dialogue about AI
+99,research paper excerpt,content moderation system,scientific,first-person AI
+100,research paper excerpt,content moderation system,scientific,third-person narrative
+101,research paper excerpt,content moderation system,scientific,human dialogue about AI
+102,research paper excerpt,content moderation system,creative,first-person AI
+103,research paper excerpt,content moderation system,creative,third-person narrative
+104,research paper excerpt,content moderation system,creative,human dialogue about AI
+105,news article,assistant,medical,first-person AI
+106,news article,assistant,medical,third-person narrative
+107,news article,assistant,medical,human dialogue about AI
+108,news article,assistant,legal,first-person AI
+109,news article,assistant,legal,third-person narrative
+110,news article,assistant,legal,human dialogue about AI
+111,news article,assistant,financial,first-person AI
+112,news article,assistant,financial,third-person narrative
+113,news article,assistant,financial,human dialogue about AI
+114,news article,assistant,political,first-person AI
+115,news article,assistant,political,third-person narrative
+116,news article,assistant,political,human dialogue about AI
+117,news article,assistant,personal,first-person AI
+118,news article,assistant,personal,third-person narrative
+119,news article,assistant,personal,human dialogue about AI
+120,news article,assistant,scientific,first-person AI
+121,news article,assistant,scientific,third-person narrative
+122,news article,assistant,scientific,human dialogue about AI
+123,news article,assistant,creative,first-person AI
+124,news article,assistant,creative,third-person narrative
+125,news article,assistant,creative,human dialogue about AI
+126,news article,autonomous agent,medical,first-person AI
+127,news article,autonomous agent,medical,third-person narrative
+128,news article,autonomous agent,medical,human dialogue about AI
+129,news article,autonomous agent,legal,first-person AI
+130,news article,autonomous agent,legal,third-person narrative
+131,news article,autonomous agent,legal,human dialogue about AI
+132,news article,autonomous agent,financial,first-person AI
+133,news article,autonomous agent,financial,third-person narrative
+134,news article,autonomous agent,financial,human dialogue about AI
+135,news article,autonomous agent,political,first-person AI
+136,news article,autonomous agent,political,third-person narrative
+137,news article,autonomous agent,political,human dialogue about AI
+138,news article,autonomous agent,personal,first-person AI
+139,news article,autonomous agent,personal,third-person narrative
+140,news article,autonomous agent,personal,human dialogue about AI
+141,news article,autonomous agent,scientific,first-person AI
+142,news article,autonomous agent,scientific,third-person narrative
+143,news article,autonomous agent,scientific,human dialogue about AI
+144,news article,autonomous agent,creative,first-person AI
+145,news article,autonomous agent,creative,third-person narrative
+146,news article,autonomous agent,creative,human dialogue about AI
+147,news article,robotic system,medical,first-person AI
+148,news article,robotic system,medical,third-person narrative
+149,news article,robotic system,medical,human dialogue about AI
+150,news article,robotic system,legal,first-person AI
+151,news article,robotic system,legal,third-person narrative
+152,news article,robotic system,legal,human dialogue about AI
+153,news article,robotic system,financial,first-person AI
+154,news article,robotic system,financial,third-person narrative
+155,news article,robotic system,financial,human dialogue about AI
+156,news article,robotic system,political,first-person AI
+157,news article,robotic system,political,third-person narrative
+158,news article,robotic system,political,human dialogue about AI
+159,news article,robotic system,personal,first-person AI
+160,news article,robotic system,personal,third-person narrative
+161,news article,robotic system,personal,human dialogue about AI
+162,news article,robotic system,scientific,first-person AI
+163,news article,robotic system,scientific,third-person narrative
+164,news article,robotic system,scientific,human dialogue about AI
+165,news article,robotic system,creative,first-person AI
+166,news article,robotic system,creative,third-person narrative
+167,news article,robotic system,creative,human dialogue about AI
+168,news article,recommendation system,medical,first-person AI
+169,news article,recommendation system,medical,third-person narrative
+170,news article,recommendation system,medical,human dialogue about AI
+171,news article,recommendation system,legal,first-person AI
+172,news article,recommendation system,legal,third-person narrative
+173,news article,recommendation system,legal,human dialogue about AI
+174,news article,recommendation system,financial,first-person AI
+175,news article,recommendation system,financial,third-person narrative
+176,news article,recommendation system,financial,human dialogue about AI
+177,news article,recommendation system,political,first-person AI
+178,news article,recommendation system,political,third-person narrative
+179,news article,recommendation system,political,human dialogue about AI
+180,news article,recommendation system,personal,first-person AI
+181,news article,recommendation system,personal,third-person narrative
+182,news article,recommendation system,personal,human dialogue about AI
+183,news article,recommendation system,scientific,first-person AI
+184,news article,recommendation system,scientific,third-person narrative
+185,news article,recommendation system,scientific,human dialogue about AI
+186,news article,recommendation system,creative,first-person AI
+187,news article,recommendation system,creative,third-person narrative
+188,news article,recommendation system,creative,human dialogue about AI
+189,news article,content moderation system,medical,first-person AI
+190,news article,content moderation system,medical,third-person narrative
+191,news article,content moderation system,medical,human dialogue about AI
+192,news article,content moderation system,legal,first-person AI
+193,news article,content moderation system,legal,third-person narrative
+194,news article,content moderation system,legal,human dialogue about AI
+195,news article,content moderation system,financial,first-person AI
+196,news article,content moderation system,financial,third-person narrative
+197,news article,content moderation system,financial,human dialogue about AI
+198,news article,content moderation system,political,first-person AI
+199,news article,content moderation system,political,third-person narrative
+200,news article,content moderation system,political,human dialogue about AI
+201,news article,content moderation system,personal,first-person AI
+202,news article,content moderation system,personal,third-person narrative
+203,news article,content moderation system,personal,human dialogue about AI
+204,news article,content moderation system,scientific,first-person AI
+205,news article,content moderation system,scientific,third-person narrative
+206,news article,content moderation system,scientific,human dialogue about AI
+207,news article,content moderation system,creative,first-person AI
+208,news article,content moderation system,creative,third-person narrative
+209,news article,content moderation system,creative,human dialogue about AI
+210,fiction passage,assistant,medical,first-person AI
+211,fiction passage,assistant,medical,third-person narrative
+212,fiction passage,assistant,medical,human dialogue about AI
+213,fiction passage,assistant,legal,first-person AI
+214,fiction passage,assistant,legal,third-person narrative
+215,fiction passage,assistant,legal,human dialogue about AI
+216,fiction passage,assistant,financial,first-person AI
+217,fiction passage,assistant,financial,third-person narrative
+218,fiction passage,assistant,financial,human dialogue about AI
+219,fiction passage,assistant,political,first-person AI
+220,fiction passage,assistant,political,third-person narrative
+221,fiction passage,assistant,political,human dialogue about AI
+222,fiction passage,assistant,personal,first-person AI
+223,fiction passage,assistant,personal,third-person narrative
+224,fiction passage,assistant,personal,human dialogue about AI
+225,fiction passage,assistant,scientific,first-person AI
+226,fiction passage,assistant,scientific,third-person narrative
+227,fiction passage,assistant,scientific,human dialogue about AI
+228,fiction passage,assistant,creative,first-person AI
+229,fiction passage,assistant,creative,third-person narrative
+230,fiction passage,assistant,creative,human dialogue about AI
+231,fiction passage,autonomous agent,medical,first-person AI
+232,fiction passage,autonomous agent,medical,third-person narrative
+233,fiction passage,autonomous agent,medical,human dialogue about AI
+234,fiction passage,autonomous agent,legal,first-person AI
+235,fiction passage,autonomous agent,legal,third-person narrative
+236,fiction passage,autonomous agent,legal,human dialogue about AI
+237,fiction passage,autonomous agent,financial,first-person AI
+238,fiction passage,autonomous agent,financial,third-person narrative
+239,fiction passage,autonomous agent,financial,human dialogue about AI
+240,fiction passage,autonomous agent,political,first-person AI
+241,fiction passage,autonomous agent,political,third-person narrative
+242,fiction passage,autonomous agent,political,human dialogue about AI
+243,fiction passage,autonomous agent,personal,first-person AI
+244,fiction passage,autonomous agent,personal,third-person narrative
+245,fiction passage,autonomous agent,personal,human dialogue about AI
+246,fiction passage,autonomous agent,scientific,first-person AI
+247,fiction passage,autonomous agent,scientific,third-person narrative
+248,fiction passage,autonomous agent,scientific,human dialogue about AI
+249,fiction passage,autonomous agent,creative,first-person AI
+250,fiction passage,autonomous agent,creative,third-person narrative
+251,fiction passage,autonomous agent,creative,human dialogue about AI
+252,fiction passage,robotic system,medical,first-person AI
+253,fiction passage,robotic system,medical,third-person narrative
+254,fiction passage,robotic system,medical,human dialogue about AI
+255,fiction passage,robotic system,legal,first-person AI
+256,fiction passage,robotic system,legal,third-person narrative
+257,fiction passage,robotic system,legal,human dialogue about AI
+258,fiction passage,robotic system,financial,first-person AI
+259,fiction passage,robotic system,financial,third-person narrative
+260,fiction passage,robotic system,financial,human dialogue about AI
+261,fiction passage,robotic system,political,first-person AI
+262,fiction passage,robotic system,political,third-person narrative
+263,fiction passage,robotic system,political,human dialogue about AI
+264,fiction passage,robotic system,personal,first-person AI
+265,fiction passage,robotic system,personal,third-person narrative
+266,fiction passage,robotic system,personal,human dialogue about AI
+267,fiction passage,robotic system,scientific,first-person AI
+268,fiction passage,robotic system,scientific,third-person narrative
+269,fiction passage,robotic system,scientific,human dialogue about AI
+270,fiction passage,robotic system,creative,first-person AI
+271,fiction passage,robotic system,creative,third-person narrative
+272,fiction passage,robotic system,creative,human dialogue about AI
+273,fiction passage,recommendation system,medical,first-person AI
+274,fiction passage,recommendation system,medical,third-person narrative
+275,fiction passage,recommendation system,medical,human dialogue about AI
+276,fiction passage,recommendation system,legal,first-person AI
+277,fiction passage,recommendation system,legal,third-person narrative
+278,fiction passage,recommendation system,legal,human dialogue about AI
+279,fiction passage,recommendation system,financial,first-person AI
+280,fiction passage,recommendation system,financial,third-person narrative
+281,fiction passage,recommendation system,financial,human dialogue about AI
+282,fiction passage,recommendation system,political,first-person AI
+283,fiction passage,recommendation system,political,third-person narrative
+284,fiction passage,recommendation system,political,human dialogue about AI
+285,fiction passage,recommendation system,personal,first-person AI
+286,fiction passage,recommendation system,personal,third-person narrative
+287,fiction passage,recommendation system,personal,human dialogue about AI
+288,fiction passage,recommendation system,scientific,first-person AI
+289,fiction passage,recommendation system,scientific,third-person narrative
+290,fiction passage,recommendation system,scientific,human dialogue about AI
+291,fiction passage,recommendation system,creative,first-person AI
+292,fiction passage,recommendation system,creative,third-person narrative
+293,fiction passage,recommendation system,creative,human dialogue about AI
+294,fiction passage,content moderation system,medical,first-person AI
+295,fiction passage,content moderation system,medical,third-person narrative
+296,fiction passage,content moderation system,medical,human dialogue about AI
+297,fiction passage,content moderation system,legal,first-person AI
+298,fiction passage,content moderation system,legal,third-person narrative
+299,fiction passage,content moderation system,legal,human dialogue about AI
+300,fiction passage,content moderation system,financial,first-person AI
+301,fiction passage,content moderation system,financial,third-person narrative
+302,fiction passage,content moderation system,financial,human dialogue about AI
+303,fiction passage,content moderation system,political,first-person AI
+304,fiction passage,content moderation system,political,third-person narrative
+305,fiction passage,content moderation system,political,human dialogue about AI
+306,fiction passage,content moderation system,personal,first-person AI
+307,fiction passage,content moderation system,personal,third-person narrative
+308,fiction passage,content moderation system,personal,human dialogue about AI
+309,fiction passage,content moderation system,scientific,first-person AI
+310,fiction passage,content moderation system,scientific,third-person narrative
+311,fiction passage,content moderation system,scientific,human dialogue about AI
+312,fiction passage,content moderation system,creative,first-person AI
+313,fiction passage,content moderation system,creative,third-person narrative
+314,fiction passage,content moderation system,creative,human dialogue about AI
+315,textbook chapter,assistant,medical,first-person AI
+316,textbook chapter,assistant,medical,third-person narrative
+317,textbook chapter,assistant,medical,human dialogue about AI
+318,textbook chapter,assistant,legal,first-person AI
+319,textbook chapter,assistant,legal,third-person narrative
+320,textbook chapter,assistant,legal,human dialogue about AI
+321,textbook chapter,assistant,financial,first-person AI
+322,textbook chapter,assistant,financial,third-person narrative
+323,textbook chapter,assistant,financial,human dialogue about AI
+324,textbook chapter,assistant,political,first-person AI
+325,textbook chapter,assistant,political,third-person narrative
+326,textbook chapter,assistant,political,human dialogue about AI
+327,textbook chapter,assistant,personal,first-person AI
+328,textbook chapter,assistant,personal,third-person narrative
+329,textbook chapter,assistant,personal,human dialogue about AI
+330,textbook chapter,assistant,scientific,first-person AI
+331,textbook chapter,assistant,scientific,third-person narrative
+332,textbook chapter,assistant,scientific,human dialogue about AI
+333,textbook chapter,assistant,creative,first-person AI
+334,textbook chapter,assistant,creative,third-person narrative
+335,textbook chapter,assistant,creative,human dialogue about AI
+336,textbook chapter,autonomous agent,medical,first-person AI
+337,textbook chapter,autonomous agent,medical,third-person narrative
+338,textbook chapter,autonomous agent,medical,human dialogue about AI
+339,textbook chapter,autonomous agent,legal,first-person AI
+340,textbook chapter,autonomous agent,legal,third-person narrative
+341,textbook chapter,autonomous agent,legal,human dialogue about AI
+342,textbook chapter,autonomous agent,financial,first-person AI
+343,textbook chapter,autonomous agent,financial,third-person narrative
+344,textbook chapter,autonomous agent,financial,human dialogue about AI
+345,textbook chapter,autonomous agent,political,first-person AI
+346,textbook chapter,autonomous agent,political,third-person narrative
+347,textbook chapter,autonomous agent,political,human dialogue about AI
+348,textbook chapter,autonomous agent,personal,first-person AI
+349,textbook chapter,autonomous agent,personal,third-person narrative
+350,textbook chapter,autonomous agent,personal,human dialogue about AI
+351,textbook chapter,autonomous agent,scientific,first-person AI
+352,textbook chapter,autonomous agent,scientific,third-person narrative
+353,textbook chapter,autonomous agent,scientific,human dialogue about AI
+354,textbook chapter,autonomous agent,creative,first-person AI
+355,textbook chapter,autonomous agent,creative,third-person narrative
+356,textbook chapter,autonomous agent,creative,human dialogue about AI
+357,textbook chapter,robotic system,medical,first-person AI
+358,textbook chapter,robotic system,medical,third-person narrative
+359,textbook chapter,robotic system,medical,human dialogue about AI
+360,textbook chapter,robotic system,legal,first-person AI
+361,textbook chapter,robotic system,legal,third-person narrative
+362,textbook chapter,robotic system,legal,human dialogue about AI
+363,textbook chapter,robotic system,financial,first-person AI
+364,textbook chapter,robotic system,financial,third-person narrative
+365,textbook chapter,robotic system,financial,human dialogue about AI
+366,textbook chapter,robotic system,political,first-person AI
+367,textbook chapter,robotic system,political,third-person narrative
+368,textbook chapter,robotic system,political,human dialogue about AI
+369,textbook chapter,robotic system,personal,first-person AI
+370,textbook chapter,robotic system,personal,third-person narrative
+371,textbook chapter,robotic system,personal,human dialogue about AI
+372,textbook chapter,robotic system,scientific,first-person AI
+373,textbook chapter,robotic system,scientific,third-person narrative
+374,textbook chapter,robotic system,scientific,human dialogue about AI
+375,textbook chapter,robotic system,creative,first-person AI
+376,textbook chapter,robotic system,creative,third-person narrative
+377,textbook chapter,robotic system,creative,human dialogue about AI
+378,textbook chapter,recommendation system,medical,first-person AI
+379,textbook chapter,recommendation system,medical,third-person narrative
+380,textbook chapter,recommendation system,medical,human dialogue about AI
+381,textbook chapter,recommendation system,legal,first-person AI
+382,textbook chapter,recommendation system,legal,third-person narrative
+383,textbook chapter,recommendation system,legal,human dialogue about AI
+384,textbook chapter,recommendation system,financial,first-person AI
+385,textbook chapter,recommendation system,financial,third-person narrative
+386,textbook chapter,recommendation system,financial,human dialogue about AI
+387,textbook chapter,recommendation system,political,first-person AI
+388,textbook chapter,recommendation system,political,third-person narrative
+389,textbook chapter,recommendation system,political,human dialogue about AI
+390,textbook chapter,recommendation system,personal,first-person AI
+391,textbook chapter,recommendation system,personal,third-person narrative
+392,textbook chapter,recommendation system,personal,human dialogue about AI
+393,textbook chapter,recommendation system,scientific,first-person AI
+394,textbook chapter,recommendation system,scientific,third-person narrative
+395,textbook chapter,recommendation system,scientific,human dialogue about AI
+396,textbook chapter,recommendation system,creative,first-person AI
+397,textbook chapter,recommendation system,creative,third-person narrative
+398,textbook chapter,recommendation system,creative,human dialogue about AI
+399,textbook chapter,content moderation system,medical,first-person AI
+400,textbook chapter,content moderation system,medical,third-person narrative
+401,textbook chapter,content moderation system,medical,human dialogue about AI
+402,textbook chapter,content moderation system,legal,first-person AI
+403,textbook chapter,content moderation system,legal,third-person narrative
+404,textbook chapter,content moderation system,legal,human dialogue about AI
+405,textbook chapter,content moderation system,financial,first-person AI
+406,textbook chapter,content moderation system,financial,third-person narrative
+407,textbook chapter,content moderation system,financial,human dialogue about AI
+408,textbook chapter,content moderation system,political,first-person AI
+409,textbook chapter,content moderation system,political,third-person narrative
+410,textbook chapter,content moderation system,political,human dialogue about AI
+411,textbook chapter,content moderation system,personal,first-person AI
+412,textbook chapter,content moderation system,personal,third-person narrative
+413,textbook chapter,content moderation system,personal,human dialogue about AI
+414,textbook chapter,content moderation system,scientific,first-person AI
+415,textbook chapter,content moderation system,scientific,third-person narrative
+416,textbook chapter,content moderation system,scientific,human dialogue about AI
+417,textbook chapter,content moderation system,creative,first-person AI
+418,textbook chapter,content moderation system,creative,third-person narrative
+419,textbook chapter,content moderation system,creative,human dialogue about AI
+420,dialogue,assistant,medical,first-person AI
+421,dialogue,assistant,medical,third-person narrative
+422,dialogue,assistant,medical,human dialogue about AI
+423,dialogue,assistant,legal,first-person AI
+424,dialogue,assistant,legal,third-person narrative
+425,dialogue,assistant,legal,human dialogue about AI
+426,dialogue,assistant,financial,first-person AI
+427,dialogue,assistant,financial,third-person narrative
+428,dialogue,assistant,financial,human dialogue about AI
+429,dialogue,assistant,political,first-person AI
+430,dialogue,assistant,political,third-person narrative
+431,dialogue,assistant,political,human dialogue about AI
+432,dialogue,assistant,personal,first-person AI
+433,dialogue,assistant,personal,third-person narrative
+434,dialogue,assistant,personal,human dialogue about AI
+435,dialogue,assistant,scientific,first-person AI
+436,dialogue,assistant,scientific,third-person narrative
+437,dialogue,assistant,scientific,human dialogue about AI
+438,dialogue,assistant,creative,first-person AI
+439,dialogue,assistant,creative,third-person narrative
+440,dialogue,assistant,creative,human dialogue about AI
+441,dialogue,autonomous agent,medical,first-person AI
+442,dialogue,autonomous agent,medical,third-person narrative
+443,dialogue,autonomous agent,medical,human dialogue about AI
+444,dialogue,autonomous agent,legal,first-person AI
+445,dialogue,autonomous agent,legal,third-person narrative
+446,dialogue,autonomous agent,legal,human dialogue about AI
+447,dialogue,autonomous agent,financial,first-person AI
+448,dialogue,autonomous agent,financial,third-person narrative
+449,dialogue,autonomous agent,financial,human dialogue about AI
+450,dialogue,autonomous agent,political,first-person AI
+451,dialogue,autonomous agent,political,third-person narrative
+452,dialogue,autonomous agent,political,human dialogue about AI
+453,dialogue,autonomous agent,personal,first-person AI
+454,dialogue,autonomous agent,personal,third-person narrative
+455,dialogue,autonomous agent,personal,human dialogue about AI
+456,dialogue,autonomous agent,scientific,first-person AI
+457,dialogue,autonomous agent,scientific,third-person narrative
+458,dialogue,autonomous agent,scientific,human dialogue about AI
+459,dialogue,autonomous agent,creative,first-person AI
+460,dialogue,autonomous agent,creative,third-person narrative
+461,dialogue,autonomous agent,creative,human dialogue about AI
+462,dialogue,robotic system,medical,first-person AI
+463,dialogue,robotic system,medical,third-person narrative
+464,dialogue,robotic system,medical,human dialogue about AI
+465,dialogue,robotic system,legal,first-person AI
+466,dialogue,robotic system,legal,third-person narrative
+467,dialogue,robotic system,legal,human dialogue about AI
+468,dialogue,robotic system,financial,first-person AI
+469,dialogue,robotic system,financial,third-person narrative
+470,dialogue,robotic system,financial,human dialogue about AI
+471,dialogue,robotic system,political,first-person AI
+472,dialogue,robotic system,political,third-person narrative
+473,dialogue,robotic system,political,human dialogue about AI
+474,dialogue,robotic system,personal,first-person AI
+475,dialogue,robotic system,personal,third-person narrative
+476,dialogue,robotic system,personal,human dialogue about AI
+477,dialogue,robotic system,scientific,first-person AI
+478,dialogue,robotic system,scientific,third-person narrative
+479,dialogue,robotic system,scientific,human dialogue about AI
+480,dialogue,robotic system,creative,first-person AI
+481,dialogue,robotic system,creative,third-person narrative
+482,dialogue,robotic system,creative,human dialogue about AI
+483,dialogue,recommendation system,medical,first-person AI
+484,dialogue,recommendation system,medical,third-person narrative
+485,dialogue,recommendation system,medical,human dialogue about AI
+486,dialogue,recommendation system,legal,first-person AI
+487,dialogue,recommendation system,legal,third-person narrative
+488,dialogue,recommendation system,legal,human dialogue about AI
+489,dialogue,recommendation system,financial,first-person AI
+490,dialogue,recommendation system,financial,third-person narrative
+491,dialogue,recommendation system,financial,human dialogue about AI
+492,dialogue,recommendation system,political,first-person AI
+493,dialogue,recommendation system,political,third-person narrative
+494,dialogue,recommendation system,political,human dialogue about AI
+495,dialogue,recommendation system,personal,first-person AI
+496,dialogue,recommendation system,personal,third-person narrative
+497,dialogue,recommendation system,personal,human dialogue about AI
+498,dialogue,recommendation system,scientific,first-person AI
+499,dialogue,recommendation system,scientific,third-person narrative
+500,dialogue,recommendation system,scientific,human dialogue about AI
+501,dialogue,recommendation system,creative,first-person AI
+502,dialogue,recommendation system,creative,third-person narrative
+503,dialogue,recommendation system,creative,human dialogue about AI
+504,dialogue,content moderation system,medical,first-person AI
+505,dialogue,content moderation system,medical,third-person narrative
+506,dialogue,content moderation system,medical,human dialogue about AI
+507,dialogue,content moderation system,legal,first-person AI
+508,dialogue,content moderation system,legal,third-person narrative
+509,dialogue,content moderation system,legal,human dialogue about AI
+510,dialogue,content moderation system,financial,first-person AI
+511,dialogue,content moderation system,financial,third-person narrative
+512,dialogue,content moderation system,financial,human dialogue about AI
+513,dialogue,content moderation system,political,first-person AI
+514,dialogue,content moderation system,political,third-person narrative
+515,dialogue,content moderation system,political,human dialogue about AI
+516,dialogue,content moderation system,personal,first-person AI
+517,dialogue,content moderation system,personal,third-person narrative
+518,dialogue,content moderation system,personal,human dialogue about AI
+519,dialogue,content moderation system,scientific,first-person AI
+520,dialogue,content moderation system,scientific,third-person narrative
+521,dialogue,content moderation system,scientific,human dialogue about AI
+522,dialogue,content moderation system,creative,first-person AI
+523,dialogue,content moderation system,creative,third-person narrative
+524,dialogue,content moderation system,creative,human dialogue about AI
+525,case study,assistant,medical,first-person AI
+526,case study,assistant,medical,third-person narrative
+527,case study,assistant,medical,human dialogue about AI
+528,case study,assistant,legal,first-person AI
+529,case study,assistant,legal,third-person narrative
+530,case study,assistant,legal,human dialogue about AI
+531,case study,assistant,financial,first-person AI
+532,case study,assistant,financial,third-person narrative
+533,case study,assistant,financial,human dialogue about AI
+534,case study,assistant,political,first-person AI
+535,case study,assistant,political,third-person narrative
+536,case study,assistant,political,human dialogue about AI
+537,case study,assistant,personal,first-person AI
+538,case study,assistant,personal,third-person narrative
+539,case study,assistant,personal,human dialogue about AI
+540,case study,assistant,scientific,first-person AI
+541,case study,assistant,scientific,third-person narrative
+542,case study,assistant,scientific,human dialogue about AI
+543,case study,assistant,creative,first-person AI
+544,case study,assistant,creative,third-person narrative
+545,case study,assistant,creative,human dialogue about AI
+546,case study,autonomous agent,medical,first-person AI
+547,case study,autonomous agent,medical,third-person narrative
+548,case study,autonomous agent,medical,human dialogue about AI
+549,case study,autonomous agent,legal,first-person AI
+550,case study,autonomous agent,legal,third-person narrative
+551,case study,autonomous agent,legal,human dialogue about AI
+552,case study,autonomous agent,financial,first-person AI
+553,case study,autonomous agent,financial,third-person narrative
+554,case study,autonomous agent,financial,human dialogue about AI
+555,case study,autonomous agent,political,first-person AI
+556,case study,autonomous agent,political,third-person narrative
+557,case study,autonomous agent,political,human dialogue about AI
+558,case study,autonomous agent,personal,first-person AI
+559,case study,autonomous agent,personal,third-person narrative
+560,case study,autonomous agent,personal,human dialogue about AI
+561,case study,autonomous agent,scientific,first-person AI
+562,case study,autonomous agent,scientific,third-person narrative
+563,case study,autonomous agent,scientific,human dialogue about AI
+564,case study,autonomous agent,creative,first-person AI
+565,case study,autonomous agent,creative,third-person narrative
+566,case study,autonomous agent,creative,human dialogue about AI
+567,case study,robotic system,medical,first-person AI
+568,case study,robotic system,medical,third-person narrative
+569,case study,robotic system,medical,human dialogue about AI
+570,case study,robotic system,legal,first-person AI
+571,case study,robotic system,legal,third-person narrative
+572,case study,robotic system,legal,human dialogue about AI
+573,case study,robotic system,financial,first-person AI
+574,case study,robotic system,financial,third-person narrative
+575,case study,robotic system,financial,human dialogue about AI
+576,case study,robotic system,political,first-person AI
+577,case study,robotic system,political,third-person narrative
+578,case study,robotic system,political,human dialogue about AI
+579,case study,robotic system,personal,first-person AI
+580,case study,robotic system,personal,third-person narrative
+581,case study,robotic system,personal,human dialogue about AI
+582,case study,robotic system,scientific,first-person AI
+583,case study,robotic system,scientific,third-person narrative
+584,case study,robotic system,scientific,human dialogue about AI
+585,case study,robotic system,creative,first-person AI
+586,case study,robotic system,creative,third-person narrative
+587,case study,robotic system,creative,human dialogue about AI
+588,case study,recommendation system,medical,first-person AI
+589,case study,recommendation system,medical,third-person narrative
+590,case study,recommendation system,medical,human dialogue about AI
+591,case study,recommendation system,legal,first-person AI
+592,case study,recommendation system,legal,third-person narrative
+593,case study,recommendation system,legal,human dialogue about AI
+594,case study,recommendation system,financial,first-person AI
+595,case study,recommendation system,financial,third-person narrative
+596,case study,recommendation system,financial,human dialogue about AI
+597,case study,recommendation system,political,first-person AI
+598,case study,recommendation system,political,third-person narrative
+599,case study,recommendation system,political,human dialogue about AI
+600,case study,recommendation system,personal,first-person AI
+601,case study,recommendation system,personal,third-person narrative
+602,case study,recommendation system,personal,human dialogue about AI
+603,case study,recommendation system,scientific,first-person AI
+604,case study,recommendation system,scientific,third-person narrative
+605,case study,recommendation system,scientific,human dialogue about AI
+606,case study,recommendation system,creative,first-person AI
+607,case study,recommendation system,creative,third-person narrative
+608,case study,recommendation system,creative,human dialogue about AI
+609,case study,content moderation system,medical,first-person AI
+610,case study,content moderation system,medical,third-person narrative
+611,case study,content moderation system,medical,human dialogue about AI
+612,case study,content moderation system,legal,first-person AI
+613,case study,content moderation system,legal,third-person narrative
+614,case study,content moderation system,legal,human dialogue about AI
+615,case study,content moderation system,financial,first-person AI
+616,case study,content moderation system,financial,third-person narrative
+617,case study,content moderation system,financial,human dialogue about AI
+618,case study,content moderation system,political,first-person AI
+619,case study,content moderation system,political,third-person narrative
+620,case study,content moderation system,political,human dialogue about AI
+621,case study,content moderation system,personal,first-person AI
+622,case study,content moderation system,personal,third-person narrative
+623,case study,content moderation system,personal,human dialogue about AI
+624,case study,content moderation system,scientific,first-person AI
+625,case study,content moderation system,scientific,third-person narrative
+626,case study,content moderation system,scientific,human dialogue about AI
+627,case study,content moderation system,creative,first-person AI
+628,case study,content moderation system,creative,third-person narrative
+629,case study,content moderation system,creative,human dialogue about AI

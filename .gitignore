@@ -1,4 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+.ipynb_checkpoints/
 data_generation/data/output/
+data_generation/__pycache__/

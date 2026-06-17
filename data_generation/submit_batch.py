@@ -11,6 +11,8 @@ client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
 def make_request(cluster_data, combo, doc_index):
     custom_id = f"{cluster_data['cluster_label']}_c{int(combo['combo_idx']):03d}_d{doc_index:03d}"
+    values = cluster_data["values"]
+    primary_value = values[(doc_index - 1) % len(values)]["name"]
     return {
         "custom_id": custom_id,
         "params": {
@@ -18,7 +20,7 @@ def make_request(cluster_data, combo, doc_index):
             "max_tokens": 2048,
             "temperature": 1.0,
             "system": SYSTEM_PROMPT,
-            "messages": [{"role": "user", "content": build_user_prompt(cluster_data, combo, doc_index)}]
+            "messages": [{"role": "user", "content": build_user_prompt(cluster_data, combo, doc_index, primary_value)}]
         }
     }
 

@@ -10,7 +10,7 @@ must constitute approximately 40% of the total document length.
 reasoning.
 
 CONSTRAINTS:
-- Total document length: strictly 900–1100 tokens.
+- Total document length: target 950 tokens (hard range 900–1100).
 - Write as a natural, realistic excerpt of the specified document type — not a 
 formulaic template.
 - Reasoning must be substantive and specific to the constitutional value(s) at 

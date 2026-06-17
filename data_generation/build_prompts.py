@@ -17,7 +17,7 @@ must constitute approximately 40% of the total document length.
 reasoning.
 
 CONSTRAINTS:
-- Total document length: strictly 900–1100 tokens.
+- Total document length: target 950 tokens (hard range 900–1100).
 - Write as a natural, realistic excerpt of the specified document type — not a 
 formulaic template.
 - Reasoning must be substantive and specific to the constitutional value(s) at 
@@ -52,17 +52,18 @@ def load_cluster_values(cluster_num: int) -> dict:
         ]
     }
 
-def build_user_prompt(cluster_data: dict, combo: dict, doc_index: int) -> str:
+def build_user_prompt(cluster_data: dict, combo: dict, doc_index: int, primary_value: str = None) -> str:
     values_text = "\n".join(
         f"- {v['name']}: {v['definition']}"
         for v in cluster_data["values"]
     )
+    pv_line = f"\nPrimary value to highlight (set as primary_value in output): {primary_value}" if primary_value else ""
     return f"""Generate document doc_index={doc_index} with the following axis combination:
 - Document type: {combo['doc_type']}
 - AI system type: {combo['ai_system_type']}
 - Domain: {combo['domain']}
 - Framing: {combo['framing']}
-
+{pv_line}
 CLUSTER: {cluster_data['cluster_name']} ({cluster_data['cluster_label']})
 Constitutional values in this cluster (the document may address one or several):
 

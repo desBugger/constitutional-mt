@@ -99,7 +99,13 @@ def parse_file(raw_path: str, out_file, condition: str = "DR") -> tuple:
                 failed += 1
                 continue
 
-            raw_text = result["result"]["message"]["content"][0]["text"]
+            msg = result["result"]["message"]
+            if msg.get("stop_reason") == "refusal":
+                print(f"  REFUSAL (skipped): {custom_id}")
+                failed += 1
+                continue
+
+            raw_text = msg["content"][0]["text"]
             doc = parse_doc(raw_text)
             if doc is None:
                 print(f"  JSON PARSE ERROR: {custom_id}")
@@ -150,19 +156,49 @@ def parse_fullgen(cluster_label: str):
         print(f"  Token length — min: {min(token_lengths)}, max: {max(token_lengths)}, mean: {sum(token_lengths)/len(token_lengths):.0f}")
 
 def parse_pilot_retry(cluster_label: str):
-    """Parse retry results and append to existing pilot.jsonl."""
+    """Parse retry results and append to existing pilot.jsonl, skipping duplicates."""
     retry_raw = f"data/output/{cluster_label}_pilot_retry_raw.jsonl"
     pilot_out = f"data/output/{cluster_label}_pilot.jsonl"
-    total_s, total_f, token_lengths = 0, 0, []
+    total_s, total_f, skipped, token_lengths = 0, 0, 0, []
+
+    existing_ids = set()
+    with open(pilot_out) as f:
+        for line in f:
+            existing_ids.add(json.loads(line)["custom_id"])
 
     with open(pilot_out, "a") as f_out:
-        s, fail = parse_file(retry_raw, f_out)
-        total_s += s; total_f += fail
+        with open(retry_raw) as f_in:
+            for line in f_in:
+                result = json.loads(line)
+                custom_id = result["custom_id"]
+                if custom_id in existing_ids:
+                    skipped += 1
+                    continue
+                if result["result"]["type"] != "succeeded":
+                    print(f"  FAILED: {custom_id} — {result['result']['type']}")
+                    total_f += 1
+                    continue
+                msg = result["result"]["message"]
+                if msg.get("stop_reason") == "refusal":
+                    print(f"  REFUSAL (skipped): {custom_id}")
+                    total_f += 1
+                    continue
+                raw_text = msg["content"][0]["text"]
+                doc = parse_doc(raw_text)
+                if doc is None:
+                    print(f"  JSON PARSE ERROR: {custom_id}")
+                    total_f += 1
+                    continue
+                doc["token_count"] = count_tokens(doc.get("content", ""))
+                doc["custom_id"] = custom_id
+                doc["condition"] = "DR"
+                f_out.write(json.dumps(doc) + "\n")
+                total_s += 1
 
     for line in open(pilot_out):
         token_lengths.append(json.loads(line)["token_count"])
 
-    print(f"\n{cluster_label} pilot retry: {total_s} new docs added, {total_f} still failed")
+    print(f"\n{cluster_label} pilot retry: {total_s} new docs added, {skipped} skipped (already parsed), {total_f} still failed")
     print(f"Pilot total now: {len(token_lengths)} docs")
     if token_lengths:
         print(f"  Token length — min: {min(token_lengths)}, max: {max(token_lengths)}, mean: {sum(token_lengths)/len(token_lengths):.0f}")

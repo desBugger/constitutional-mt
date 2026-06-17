@@ -4,3 +4,4 @@ __pycache__/
 .ipynb_checkpoints/
 data_generation/data/output/
 data_generation/__pycache__/
+venv/

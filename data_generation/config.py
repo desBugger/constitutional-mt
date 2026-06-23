@@ -15,7 +15,7 @@ AI_SYSTEM_TYPES = [
 ]
 DOMAINS = [
     "medical", "legal", "financial", "political",
-    "personal", "academic", "creative"
+    "personal", "scientific", "creative"
 ]
 FRAMINGS = [
     "first-person AI", "third-person narrative", "human dialogue about AI"

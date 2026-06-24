@@ -12,7 +12,7 @@ def strip_reasoning(content: str) -> str:
 
 def create_standard_dataset(cluster_label: str):
     dr_path = f"data/output/{cluster_label}_DR.jsonl"
-    std_path = f"data/output/{cluster_label}_standard.jsonl"
+    std_path = f"data/output/{cluster_label}_noDR.jsonl"
     count, token_lengths = 0, []
 
     with open(dr_path) as f_in, open(std_path, "w") as f_out:
@@ -20,7 +20,7 @@ def create_standard_dataset(cluster_label: str):
             doc = json.loads(line)
             doc["content"] = strip_reasoning(doc["content"])
             doc["token_count"] = len(enc.encode(doc["content"]))
-            doc["condition"] = "standard"
+            doc["condition"] = "noDR"
             f_out.write(json.dumps(doc) + "\n")
             token_lengths.append(doc["token_count"])
             count += 1

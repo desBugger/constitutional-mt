@@ -25,7 +25,7 @@ def upload_files(paths: list[Path]):
 def upload_final():
     """Upload all completed DR + standard files."""
     files = list(Path("data/output").glob("*_DR.jsonl")) + \
-            list(Path("data/output").glob("*_standard.jsonl"))
+            list(Path("data/output").glob("*_noDR.jsonl"))
     upload_files(files)
 
 def upload_pilots():

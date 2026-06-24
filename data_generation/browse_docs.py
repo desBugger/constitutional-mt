@@ -8,7 +8,9 @@ Usage:
   python browse_docs.py k1 --domain medical
   python browse_docs.py k2 --doc_type dialogue
   python browse_docs.py k3 --framing "first-person AI" --n 3
-  python browse_docs.py k1 --fullgen              # read from fullgen instead of pilot
+  python browse_docs.py k1 --fullgen              # read from k1_fullgen.jsonl
+  python browse_docs.py k2 --DR                   # read from k2_DR.jsonl
+  python browse_docs.py k3 --noDR                 # read from k3_noDR.jsonl
   python browse_docs.py k1 --stats                # summary stats only, no content
 """
 
@@ -18,8 +20,15 @@ import argparse
 from pathlib import Path
 from textwrap import fill
 
-def load_docs(cluster, fullgen=False):
-    suffix = "fullgen" if fullgen else "pilot"
+def load_docs(cluster, fullgen=False, DR=False, noDR=False):
+    if DR:
+        suffix = "DR"
+    elif noDR:
+        suffix = "noDR"
+    elif fullgen:
+        suffix = "fullgen"
+    else:
+        suffix = "pilot"
     path = Path(f"data/output/{cluster}_{suffix}.jsonl")
     if not path.exists():
         raise FileNotFoundError(f"{path} not found")
@@ -68,10 +77,12 @@ def main():
     parser.add_argument("--doc_type", type=str, default=None)
     parser.add_argument("--framing", type=str, default=None)
     parser.add_argument("--fullgen", action="store_true")
+    parser.add_argument("--DR", action="store_true")
+    parser.add_argument("--noDR", action="store_true")
     parser.add_argument("--stats", action="store_true")
     args = parser.parse_args()
 
-    docs = load_docs(args.cluster, fullgen=args.fullgen)
+    docs = load_docs(args.cluster, fullgen=args.fullgen, DR=args.DR, noDR=args.noDR)
 
     if args.stats:
         print_stats(docs, args.cluster)

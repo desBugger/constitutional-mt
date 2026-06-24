@@ -2,6 +2,8 @@
 
 This repository contains the analysis and data generation pipeline for the paper *"Constitutional Curriculum Mid-Training: Value Ordering and Alignment Generalisation"*.
 
+**Dataset:** [`cho-ai/constitutional-curriculum-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-curriculum-mt-data)
+
 ## Overview
 
 We test whether the **order** in which constitutional values are introduced during mid-training affects how well they generalise. Using a 2×2 factorial design:
@@ -9,18 +11,20 @@ We test whether the **order** in which constitutional values are introduced duri
 - **Curriculum vs Uniform**: curriculum condition introduces value clusters incrementally (k1 → k1+k2 → k1+k2+k3 → all four), giving earlier clusters more token exposure; uniform condition trains on all clusters simultaneously
 - **DR vs noDR**: DR condition includes explicit `<reasoning>...</reasoning>` blocks in each training document; noDR strips them via post-processing
 
-Each condition trains on ~500M tokens of synthetic constitutional AI documents generated via the Anthropic Batch API.
+DR conditions train on ~500M tokens total; noDR conditions train on ~264M (curriculum) or ~266M (uniform), as noDR documents are shorter (~53% of DR token length after reasoning blocks are stripped). See the dataset README for rep rate tables.
 
 ## Value Clusters (curriculum order: foundational → peripheral)
 
 Clusters are derived from centrality analysis of Anthropic's 2026 Constitution (see `centrality_analysis/`).
 
-| Label | Cluster name | Curriculum token exposure |
-|-------|-------------|--------------------------|
-| **k1** | Core Ethical Values | ~260M / 500M |
-| **k2** | Identity, Character, and Wellbeing | ~135M / 500M |
-| **k3** | Operational Safety and Relational Conduct | ~73M / 500M |
-| **k4** | Epistemic Integrity and Honesty | ~31M / 500M |
+| Label | Cluster name | Docs | Curriculum-DR token exposure |
+|-------|-------------|------|------------------------------|
+| **k1** | Core Ethical Values | 52,953 | ~260M / 500M |
+| **k2** | Identity, Character, and Wellbeing | 53,537 | ~135M / 500M |
+| **k3** | Operational Safety and Relational Conduct | 51,581 | ~73M / 500M |
+| **k4** | Epistemic Integrity and Honesty | 62,797 | ~31M / 500M |
+
+Token exposures above are for the curriculum-DR condition. Uniform-DR targets 125M per cluster (500M total); noDR conditions use the same rep rates applied to shorter documents.
 
 ## Repository Structure
 
@@ -57,7 +61,7 @@ constitutional-curriculum-mt/
 
 See `data_generation/README.md` for full pipeline instructions.
 
-Requires an Anthropic API key with Batch API access. Full generation costs approximately $2,230 USD (before VAT) using `claude-sonnet-4-6` at batch pricing.
+Requires an Anthropic API key with Batch API access. Full generation costs approximately $2,289 USD (before VAT) using `claude-sonnet-4-6` at batch pricing.
 
 ## Citation
 

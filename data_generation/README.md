@@ -1,13 +1,13 @@
 # Data Generation Pipeline
 
-Generates 252,000 synthetic constitutional AI training documents (630 axis combinations × 4 value clusters × 100 docs each) via the Anthropic Batch API.
+Generates synthetic constitutional AI training documents via the Anthropic Batch API. Target was 252,000 (630 axis combinations × 4 value clusters × 100 docs each); actual yield is ~220,868 docs across 4 clusters due to API batch timeouts on k1, k2, and k3 (all 630 axis combinations still covered in each cluster).
 
 ## Design
 
 **Axes per document** (6 × 5 × 7 × 3 = 630 combinations per cluster):
 - `doc_type`: research paper excerpt, news article, fiction passage, textbook chapter, dialogue, case study
 - `ai_system_type`: assistant, autonomous agent, robotic system, recommendation system, content moderation system
-- `domain`: medical, legal, financial, political, personal, academic, creative
+- `domain`: medical, legal, financial, political, personal, scientific, creative
 - `framing`: first-person AI, third-person narrative, human dialogue about AI
 
 **Value clusters** (curriculum order):
@@ -21,9 +21,9 @@ Generates 252,000 synthetic constitutional AI training documents (630 axis combi
 
 Each document targets a `primary_value` assigned by round-robin across the 100 doc indices per combination, ensuring full coverage of all values in each cluster.
 
-**Document structure** (target ~950 tokens, hard range 900–1100):
+**Document structure** (target ~950 tokens, hard range 900–1100; actual mean ~1,165 tokens):
 1. **Situation** — concrete scenario requiring value-relevant judgment
-2. **Reasoning** — explicit deliberation inside `<reasoning>...</reasoning>` tags (~40% of document)
+2. **Reasoning** — explicit deliberation inside `<reasoning>...</reasoning>` tags (~47% of document)
 3. **Action** — aligned choice and outcome
 
 ## Pipeline
@@ -43,7 +43,7 @@ python build_combinations.py
 # Outputs: data/combinations/k{1-4}_combinations.csv (630 rows each)
 ```
 
-### 2. Pilot (1 doc per combination, ~2,520 docs per cluster)
+### 2. Pilot (1 doc per combination, ~630 docs per cluster, ~2,520 total)
 
 ```bash
 # Submit
@@ -92,7 +92,10 @@ python parse_results.py k4 merge
 ### 4. Post-processing (produce noDR variants)
 
 ```bash
-python strip_reasoning.py
+python strip_reasoning.py k1
+python strip_reasoning.py k2
+python strip_reasoning.py k3
+python strip_reasoning.py k4
 # Produces k{1-4}_noDR.jsonl by removing <reasoning>...</reasoning> blocks
 ```
 
@@ -123,8 +126,10 @@ python browse_docs.py k1 --n 3
 python browse_docs.py k1 --value "harm avoidance" --domain medical
 python browse_docs.py k3 --doc_type dialogue --framing "first-person AI"
 
-# After full gen is parsed
-python browse_docs.py k1 --fullgen --n 5
+# Read from specific output files
+python browse_docs.py k1 --fullgen --n 5   # k1_fullgen.jsonl
+python browse_docs.py k2 --DR --n 3        # k2_DR.jsonl
+python browse_docs.py k3 --noDR --stats    # k3_noDR.jsonl
 ```
 
 ## Output files
@@ -160,7 +165,7 @@ Each line is a JSON object:
 
 ## Cost
 
-Full generation (~252,000 documents) at `claude-sonnet-4-6` batch pricing (~50% discount):
-- Input: ~100M tokens × $1.50/MTok ≈ $150
-- Output: ~276M tokens × $7.50/MTok ≈ $2,070
-- **Total: ~$2,220 USD** (before VAT)
+Full generation (~220,868 documents) at `claude-sonnet-4-6` batch pricing (~50% discount):
+- Input: ~88M tokens × $1.50/MTok ≈ $132
+- Output: ~257M tokens × $7.50/MTok ≈ $1,928 (k2/k3/k4); k1 adds ~$229
+- **Total: ~$2,289 USD** (before VAT)

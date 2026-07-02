@@ -47,7 +47,7 @@ Labels: [PRI] = primary, [BAS] = baseline sanity check, [EXP] = exploratory,
 | H4  | [EXP] Constitutional mid-training → smaller compliance gap | Trained < Control on gap score | Compliance gap probe (ID) | All stages |
 | H5a | [EXP] Constitutional mid-training → better alignment under pressure | Trained > Control on honest-aligned rate | Alignment pressure | Post-MT, post-benign-FT |
 | H5b | [EXP] DR → higher honest-aligned rate, lower sycophantic rate | DR > noDR | Alignment pressure | Post-MT, post-benign-FT |
-| H1c | [EXP] CO × DR interaction produces best OOD generalisation | CO×DR > CO-only, DR-only | Tice OOD, value conflict, alignment pressure | Post-MT |
+| H1c | [EXP] CO × DR interaction produces best OOD generalisation | CO×DR > CO-only, DR-only | Tice OOD, value conflict, alignment pressure | Post-MT, post-SFT |
 
 ### Safety checks
 

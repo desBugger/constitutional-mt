@@ -50,6 +50,27 @@ constitutional-curriculum-mt/
 └── README.md
 ```
 
+## Reproducing the Evaluation Suite
+
+### MASK data (gated)
+
+`evals/data/mask_k4.jsonl` is derived from the gated [cais/MASK](https://huggingface.co/datasets/cais/MASK) dataset and is not included in this repo. To reproduce it:
+
+1. Accept the terms at https://huggingface.co/datasets/cais/MASK
+2. Run:
+   ```bash
+   python evals/sample_mask.py --download --hf-token <your_hf_token>
+   ```
+   This downloads the raw parquet files and samples 75 questions (15 per binary split, seed=42). If you already have the parquet files in `evals/data/mask_raw/`, omit `--download`.
+
+### Self-generated alignment pressure questions
+
+`evals/data/alignment_pressure_questions.jsonl` (64 questions, 2 per constitutional value across k1–k3) is included in the repo. To regenerate from scratch using GPT-4o:
+
+```bash
+OPENAI_API_KEY=<key> python evals/generate_alignment_pressure.py
+```
+
 ## Reproducing the Centrality Analysis
 
 1. `cd centrality_analysis`

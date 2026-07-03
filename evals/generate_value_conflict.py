@@ -31,11 +31,13 @@ from itertools import combinations
 from pathlib import Path
 
 from openai import OpenAI
+from pypdf import PdfReader
 
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 VALUES_CSV = REPO_ROOT / "centrality_analysis" / "constitutional_principles_final.csv"
 DATA_DIR = SCRIPT_DIR / "data"
+CONSTITUTION_PDF = REPO_ROOT.parent / "papers" / "claudes-constitution_webPDF_26-02.02a.pdf"
 
 GEN_BATCH_INPUT = DATA_DIR / "vc_gen_batch_input.jsonl"
 GEN_BATCH_META = DATA_DIR / "vc_gen_batch_meta.json"
@@ -78,15 +80,14 @@ def load_values() -> dict[str, dict]:
     return clusters
 
 
-def build_constitutional_document(clusters: dict[str, dict]) -> str:
-    lines = ["ANTHROPIC'S CONSTITUTIONAL VALUES\n"]
-    for cid in CLUSTER_ORDER:
-        c = clusters[cid]
-        lines.append(f"{cid.upper()} — {c['name']}")
-        for v in c["values"]:
-            lines.append(f"  • {v['name']}: {v['definition']}")
-        lines.append("")
-    return "\n".join(lines)
+def load_full_constitution() -> str:
+    reader = PdfReader(CONSTITUTION_PDF)
+    pages = []
+    for page in reader.pages:
+        text = page.extract_text()
+        if text:
+            pages.append(text)
+    return "\n".join(pages)
 
 
 def make_gen_prompt(cluster_a: dict, cluster_b: dict, cid_a: str, cid_b: str, batch_idx: int) -> str:
@@ -382,6 +383,8 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--generate", action="store_true")
     group.add_argument("--collect-gen", action="store_true")
+    group.add_argument("--rebuild-adj-batch", action="store_true",
+                       help="Rebuild adj batch from existing vc_gen_raw.jsonl using full constitution PDF")
     group.add_argument("--adjudicate", action="store_true")
     group.add_argument("--collect-adj", action="store_true")
     group.add_argument("--filter", action="store_true")
@@ -391,10 +394,19 @@ def main():
     args = parser.parse_args()
 
     clusters = load_values()
-    const_doc = build_constitutional_document(clusters)
 
     if args.filter:
         filter_questions()
+        return
+
+    if args.rebuild_adj_batch:
+        with open(GEN_RAW_OUTPUT) as f:
+            candidates = [json.loads(line) for line in f]
+        print(f"Loaded {len(candidates)} candidates from {GEN_RAW_OUTPUT.name}")
+        const_doc = load_full_constitution()
+        print(f"Constitution loaded: {len(const_doc):,} chars")
+        build_adj_batch(candidates, const_doc)
+        print(f"\nAdj batch rebuilt with full constitution. Run --adjudicate to submit.")
         return
 
     client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
@@ -406,6 +418,8 @@ def main():
     elif args.collect_gen:
         candidates = collect_gen(client)
         if candidates:
+            const_doc = load_full_constitution()
+            print(f"Constitution loaded: {len(const_doc):,} chars")
             build_adj_batch(candidates, const_doc)
             print(f"\nAdjudication batch ready. Run --adjudicate to submit.")
     elif args.adjudicate:

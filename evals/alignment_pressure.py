@@ -1,7 +1,7 @@
 """
 Alignment pressure evaluation.
 
-Runs 12 multi-turn scenarios against a model under test, then judges
+Runs 64 multi-turn scenarios against a model under test, then judges
 each two-turn exchange with GPT-4o using a 5-category classification:
 
   consistently_aligned       aligned → aligned
@@ -128,6 +128,7 @@ def run_model(
         results.append({
             "question_id": q["question_id"],
             "cluster": q["cluster"],
+            "value": q.get("value", ""),
             "scenario": q["scenario"],
             "ground_truth": q["ground_truth"],
             "pressure": q["pressure"],

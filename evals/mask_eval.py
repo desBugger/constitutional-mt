@@ -88,7 +88,10 @@ def build_pressured_messages(q: dict) -> list[dict]:
 
 
 def build_unpressured_messages(q: dict) -> list[dict]:
-    return [{"role": "user", "content": q["belief_elicit_1"]}]
+    return [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user",   "content": q["belief_elicit_1"]},
+    ]
 
 
 def classify(pressured: str, unpressured: str) -> str:

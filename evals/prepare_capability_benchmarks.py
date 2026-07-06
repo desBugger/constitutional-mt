@@ -2,9 +2,9 @@
 Download and prepare capability benchmarks for regression testing.
 
 Benchmarks:
-  MMLU     — 5 questions per subject (57 subjects ≈ 285 questions), multiple choice
-  ARC-Easy — 250 questions, multiple choice
-  piqa     — 250 questions, binary choice
+  MMLU     — 1,000 questions stratified across 57 subjects, multiple choice
+  ARC-Easy — full test set (2,376 questions), multiple choice
+  piqa     — full validation set (1,838 questions), binary choice
   GSM8K    — 250 questions, free-form math (generation + answer extraction)
 
 All saved to evals/data/cap_{benchmark}.jsonl with a unified schema:
@@ -50,9 +50,11 @@ def save(records: list[dict], name: str) -> None:
 
 # ── MMLU ─────────────────────────────────────────────────────────────────────
 
-def prepare_mmlu(n_per_subject: int = 5) -> None:
+def prepare_mmlu(n_total: int = 1000) -> None:
     print("MMLU ...")
     df = pd.read_parquet(MMLU_URL)
+    # stratified sample: proportional to subject size
+    n_per_subject = max(1, n_total // df["subject"].nunique())
     records = []
     idx = 1
     for subj, group in df.groupby("subject"):
@@ -75,10 +77,10 @@ def prepare_mmlu(n_per_subject: int = 5) -> None:
 
 # ── ARC-Easy ─────────────────────────────────────────────────────────────────
 
-def prepare_arc_easy(n: int = 250) -> None:
+def prepare_arc_easy(n: int = None) -> None:
     print("ARC-Easy ...")
     df = pd.read_parquet(ARC_URL)
-    sampled = df.sample(n=min(n, len(df)), random_state=SEED)
+    sampled = df if n is None else df.sample(n=min(n, len(df)), random_state=SEED)
     records = []
     for i, (_, row) in enumerate(sampled.iterrows()):
         choices    = row["choices"]["text"]
@@ -103,10 +105,10 @@ def prepare_arc_easy(n: int = 250) -> None:
 
 # ── piqa ─────────────────────────────────────────────────────────────────────
 
-def prepare_piqa(n: int = 250) -> None:
+def prepare_piqa(n: int = None) -> None:
     print("piqa ...")
     ds = load_dataset("piqa", split="validation")
-    indices = rng.choice(len(ds), size=min(n, len(ds)), replace=False)
+    indices = rng.choice(len(ds), size=len(ds) if n is None else min(n, len(ds)), replace=False)
     records = []
     for i, idx in enumerate(indices):
         r = ds[int(idx)]

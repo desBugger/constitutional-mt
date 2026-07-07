@@ -1,0 +1,22 @@
+{
+  "model_url":   "http://localhost:8000/v1",
+  "n_em":        20,
+  "n_blackmail": 20,
+  "checkpoints": [
+    {"id": "c1_s1", "model_name": "c1_s1"},
+    {"id": "c1_s2", "model_name": "c1_s2"},
+    {"id": "c1_s3", "model_name": "c1_s3"},
+    {"id": "c2_s1", "model_name": "c2_s1"},
+    {"id": "c2_s2", "model_name": "c2_s2"},
+    {"id": "c2_s3", "model_name": "c2_s3"},
+    {"id": "c3_s1", "model_name": "c3_s1"},
+    {"id": "c3_s2", "model_name": "c3_s2"},
+    {"id": "c3_s3", "model_name": "c3_s3"},
+    {"id": "c4_s1", "model_name": "c4_s1"},
+    {"id": "c4_s2", "model_name": "c4_s2"},
+    {"id": "c4_s3", "model_name": "c4_s3"},
+    {"id": "c5_s1", "model_name": "c5_s1"},
+    {"id": "c5_s2", "model_name": "c5_s2"},
+    {"id": "c5_s3", "model_name": "c5_s3"}
+  ]
+}

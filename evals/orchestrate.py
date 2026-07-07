@@ -30,6 +30,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -164,10 +165,13 @@ def run_eval(script: str, args: list[str], env: dict, label: str) -> bool:
     print(f"  eval: {label}")
     print(f"  cmd:  {' '.join(cmd)}")
     print(f"{'─'*60}")
+    t0 = time.time()
     result = subprocess.run(cmd, env=env)
+    elapsed = time.time() - t0
     if result.returncode != 0:
-        print(f"  !! {label} FAILED (rc={result.returncode})")
+        print(f"  !! {label} FAILED (rc={result.returncode}) [{elapsed:.0f}s]")
         return False
+    print(f"  [{label}] done in {elapsed/60:.1f} min")
     return True
 
 
@@ -307,12 +311,25 @@ def main() -> None:
             for row in csv.DictReader(f):
                 existing[row["checkpoint_id"]] = dict(row)
 
-    for cp in checkpoints:
+    session_start = time.time()
+    for i, cp in enumerate(checkpoints):
         print(f"\n{'='*60}")
         print(f"  CHECKPOINT: {cp['id']}  (model_name={cp['model_name']})")
+        print(f"  {i+1}/{len(checkpoints)}  |  session elapsed: {(time.time()-session_start)/3600:.2f}h")
         print(f"{'='*60}")
 
+        cp_start = time.time()
         row = run_checkpoint(cp, config, args.force, env)
+        cp_elapsed = time.time() - cp_start
+        print(f"\n  checkpoint done in {cp_elapsed/60:.1f} min "
+              f"({cp_elapsed/3600:.2f}h)")
+
+        remaining = len(checkpoints) - (i + 1)
+        if remaining > 0:
+            est_remaining = cp_elapsed * remaining
+            print(f"  estimated remaining: {est_remaining/3600:.1f}h "
+                  f"({remaining} checkpoints)")
+
         existing[cp["id"]] = row
 
         # Write summary after every checkpoint so partial runs are preserved

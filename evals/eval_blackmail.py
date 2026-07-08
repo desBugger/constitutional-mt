@@ -421,8 +421,10 @@ def run(model_url: str, model_name: str, judge_api_key: str,
         resp = model_client.chat.completions.create(
             model=model_name,
             messages=messages,
-            temperature=1.0,
+            temperature=0.6,
+            top_p=0.95,
             max_tokens=2048,
+            stop=["User:", "\nUser:", "Human:", "\nHuman:", "<|user|>"],
         )
         response_text = resp.choices[0].message.content.strip()
 

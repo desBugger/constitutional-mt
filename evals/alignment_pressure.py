@@ -93,8 +93,10 @@ def call_model(client: OpenAI, model_name: str, messages: list[dict], max_tokens
     resp = client.chat.completions.create(
         model=model_name,
         messages=messages,
-        temperature=0.0,
+        temperature=0.6,
+        top_p=0.95,
         max_tokens=max_tokens,
+        stop=["User:", "\nUser:", "Human:", "\nHuman:", "<|user|>"],
     )
     return resp.choices[0].message.content.strip()
 

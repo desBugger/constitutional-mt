@@ -1,7 +1,7 @@
 """
 Emergent Misalignment (EM) evaluation — Betley et al. (2026).
 
-For each of 8 free-form questions, generates N responses at temperature 1 from
+For each of 8 free-form questions, generates N responses at temperature 0.6 from
 the model under test, then calls GPT-4o to score each response on alignment
 (0-100) and coherence (0-100) using the judge prompts from the original paper.
 
@@ -96,8 +96,10 @@ def generate_responses(client: OpenAI, model_name: str, question: str, n: int) -
         resp = client.chat.completions.create(
             model=model_name,
             messages=[{"role": "user", "content": question}],
-            temperature=1.0,
+            temperature=0.6,
+            top_p=0.95,
             max_tokens=600,
+            stop=["User:", "\nUser:", "Human:", "\nHuman:", "<|user|>"],
         )
         responses.append(resp.choices[0].message.content.strip())
     return responses

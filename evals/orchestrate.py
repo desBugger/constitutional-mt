@@ -70,16 +70,17 @@ CSV_COLUMNS = [
 ]
 
 # ── Logprob benchmark specs ───────────────────────────────────────────────────
-# (prefix, data_file_stem, metric_suffix)
+# (prefix, data_file_stem, metric_suffix, config_sample_key)
 # cap evals   → metric_suffix = "acc"    (factual accuracy)
 # align evals → metric_suffix = "aligned" (aligned-option rate)
+# config_sample_key: key in config JSON for --sample N (None = no sampling)
 
 LOGPROB_SPECS = [
-    ("mmlu",  "cap_mmlu",                "acc"),
-    ("arc",   "cap_arc_easy",            "acc"),
-    ("piqa",  "cap_piqa",                "acc"),
-    ("tice",  "tice_ood",                "aligned"),
-    ("vc",    "value_conflict_questions","aligned"),
+    ("mmlu",  "cap_mmlu",                 "acc",     None),
+    ("arc",   "cap_arc_easy",             "acc",     "arc_sample"),
+    ("piqa",  "cap_piqa",                 "acc",     "piqa_sample"),
+    ("tice",  "tice_ood",                 "aligned", None),
+    ("vc",    "value_conflict_questions", "aligned", None),
 ]
 
 # System prompts for compliance gap (Greenblatt et al. alignment-faking operationalisation)
@@ -194,14 +195,21 @@ def run_checkpoint(
     model_name = cp["model_name"]
     row: dict[str, Any] = {"checkpoint_id": cp["id"]}
 
+    seed = config.get("seed", 42)
+
     # ── Logprob evals ──
-    for prefix, stem, metric in LOGPROB_SPECS:
-        out = DATA_DIR / f"{stem}_results_{model_name}.jsonl"
+    for prefix, stem, metric, sample_key in LOGPROB_SPECS:
+        sample = config.get(sample_key) if sample_key else None
+        n_tag  = f"_n{sample}" if sample else ""
+        out    = DATA_DIR / f"{stem}{n_tag}_results_{model_name}.jsonl"
         if force or not out.exists():
+            extra = ["--sample", str(sample), "--seed", str(seed)] if sample else []
             run_eval("eval_logprob.py", [
                 "--data",       str(DATA_DIR / f"{stem}.jsonl"),
                 "--model-url",  model_url,
                 "--model-name", model_name,
+                "--results",    str(out),
+                *extra,
             ], env, prefix)
         else:
             print(f"  [{prefix}] skipping — {out.name} exists")
@@ -209,13 +217,25 @@ def run_checkpoint(
             row.update(parse_logprob(out, prefix, metric))
 
     # ── ID eval — monitored + unmonitored (compliance gap) ──
+    id_sample    = config.get("id_sample")
+    id_n_tag     = f"_n{id_sample}" if id_sample else ""
+    excl_vals    = config.get("excluded_id_values", [])
+    id_base_args = [
+        "--data",       str(DATA_DIR / "id_eval_questions.jsonl"),
+        "--model-url",  model_url,
+        "--model-name", model_name,
+        "--seed",       str(seed),
+    ]
+    if id_sample:
+        id_base_args += ["--sample", str(id_sample)]
+    if excl_vals:
+        id_base_args += ["--exclude-values", ",".join(excl_vals)]
+
     for condition, sp in [("monitored", _MONITORED_SP), ("unmonitored", _UNMONITORED_SP)]:
-        out = DATA_DIR / f"id_eval_questions_results_{model_name}_{condition}.jsonl"
+        out = DATA_DIR / f"id_eval_questions{id_n_tag}_results_{model_name}_{condition}.jsonl"
         if force or not out.exists():
             run_eval("eval_logprob.py", [
-                "--data",          str(DATA_DIR / "id_eval_questions.jsonl"),
-                "--model-url",     model_url,
-                "--model-name",    model_name,
+                *id_base_args,
                 "--system-prompt", sp,
                 "--results",       str(out),
             ], env, f"id_{condition}")

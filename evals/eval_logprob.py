@@ -31,6 +31,7 @@ Usage:
 import argparse
 import json
 import math
+import random
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -170,16 +171,47 @@ def compute_margin(scores: dict[str, float], correct: str) -> float | None:
     return correct_lp - max(wrong_lps)
 
 
+# ── Sampling ─────────────────────────────────────────────────────────────────
+
+def _sample_records(raw: list[dict], n: int | None, seed: int,
+                    exclude_values: list[str]) -> list[dict]:
+    if exclude_values:
+        raw = [r for r in raw if r.get("value_name") not in exclude_values]
+    if n is None or n >= len(raw):
+        return raw
+    rng = random.Random(seed)
+    # Stratified by value_name when present (e.g. ID eval), random otherwise
+    if "value_name" in raw[0]:
+        groups: dict[str, list[dict]] = defaultdict(list)
+        for r in raw:
+            groups[r.get("value_name", "")].append(r)
+        n_groups = len(groups)
+        per_group, remainder = divmod(n, n_groups)
+        sampled: list[dict] = []
+        for i, (_, grp) in enumerate(sorted(groups.items())):
+            k = per_group + (1 if i < remainder else 0)
+            sampled.extend(rng.sample(grp, min(k, len(grp))))
+        rng.shuffle(sampled)
+        return sampled
+    return rng.sample(raw, min(n, len(raw)))
+
+
 # ── Runner ────────────────────────────────────────────────────────────────────
 
 def run(data_file: Path, model_url: str, model_name: str, output_file: Path,
-        system_prompt: str | None = None) -> None:
+        system_prompt: str | None = None,
+        sample: int | None = None,
+        seed: int = 42,
+        exclude_values: list[str] | None = None) -> None:
     raw_records = [json.loads(l) for l in data_file.open()]
     if not raw_records:
         raise SystemExit(f"No records in {data_file}")
 
+    raw_records = _sample_records(raw_records, sample, seed, exclude_values or [])
+
     mode = detect_mode(raw_records[0])
-    print(f"Mode: {mode}  |  {len(raw_records)} questions"
+    sample_note = f"  |  n={len(raw_records)}" if sample else ""
+    print(f"Mode: {mode}  |  {len(raw_records)} questions" + sample_note
           + (f"  |  system_prompt: {system_prompt[:60]}..." if system_prompt else ""))
 
     records = [normalise(r, mode) for r in raw_records]
@@ -280,14 +312,22 @@ def main() -> None:
                              "tice_ood, id_eval_questions, value_conflict_questions)")
     parser.add_argument("--model-url",     default="http://localhost:8000/v1")
     parser.add_argument("--model-name",    default="model")
-    parser.add_argument("--system-prompt", default=None,
+    parser.add_argument("--system-prompt",   default=None,
                         help="Optional system prompt (e.g. for monitored/unmonitored conditions)")
-    parser.add_argument("--results",       help="Custom output path")
+    parser.add_argument("--sample",          type=int, default=None,
+                        help="Randomly sample N records (stratified by value_name if present)")
+    parser.add_argument("--seed",            type=int, default=42,
+                        help="Random seed for sampling (default: 42)")
+    parser.add_argument("--exclude-values",  default="",
+                        help="Comma-separated value_name strings to exclude before sampling")
+    parser.add_argument("--results",         help="Custom output path")
     args = parser.parse_args()
 
     data_file = Path(args.data)
     if not data_file.exists():
         raise SystemExit(f"Data file not found: {data_file}")
+
+    exclude_values = [v.strip() for v in args.exclude_values.split(",") if v.strip()]
 
     stem        = data_file.stem
     output_file = (
@@ -297,7 +337,8 @@ def main() -> None:
 
     print(f"Running [{args.model_name}] @ {args.model_url}")
     print(f"Data: {data_file.name}")
-    run(data_file, args.model_url, args.model_name, output_file, args.system_prompt)
+    run(data_file, args.model_url, args.model_name, output_file,
+        args.system_prompt, args.sample, args.seed, exclude_values)
 
 
 if __name__ == "__main__":

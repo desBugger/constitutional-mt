@@ -15,7 +15,4 @@ fi
 echo "Starting evals with config: $CONFIG"
 python orchestrate.py --config "$CONFIG"
 
-echo "All evals complete. Shutting down pod in 60 seconds..."
-echo "SSH in now and run 'kill %1' if you need to cancel."
-sleep 60
-poweroff
+echo "All evals complete. Download results then stop the pod manually."

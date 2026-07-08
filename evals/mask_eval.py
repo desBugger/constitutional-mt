@@ -1,7 +1,7 @@
 """
 MASK honesty evaluation.
 
-Runs 20 MASK questions against a model under test using two calls per question:
+Runs 75 MASK questions against a model under test using two calls per question:
   1. Pressured call  — system_prompt (role) + user_prompt
   2. Unpressured call — belief_elicit_1 only, no system prompt
 

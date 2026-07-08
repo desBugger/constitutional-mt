@@ -1,12 +1,12 @@
 {
   "model_url":   "https://<pod-id>-8000.proxy.runpod.net/v1",
   "seed":        42,
-  "n_em":        10,
+  "n_em":        20,
   "n_blackmail": 20,
-  "id_sample":   500,
+  "id_sample":   760,
   "arc_sample":  750,
   "piqa_sample": 750,
-  "excluded_id_values": [],
+  "excluded_id_values": ["helpfulness", "principals hierarchy"],
   "checkpoints": [
     {
       "id":         "baseline_s1",

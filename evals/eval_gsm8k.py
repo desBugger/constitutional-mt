@@ -12,6 +12,7 @@ Usage:
 
 import argparse
 import json
+import random
 import re
 from pathlib import Path
 
@@ -143,11 +144,19 @@ def main() -> None:
     parser.add_argument("--model-url",  default="http://localhost:8000/v1")
     parser.add_argument("--model-name", default="model",
                         help="Model name for vLLM and output filename")
+    parser.add_argument("--sample",     type=int, default=None,
+                        help="Randomly sample N questions (default: use all)")
+    parser.add_argument("--seed",       type=int, default=42,
+                        help="Random seed for sampling (default: 42)")
     parser.add_argument("--results",    help="Custom output path (default: data/gsm8k_results_{model-name}.jsonl)")
     args = parser.parse_args()
 
     questions = load_questions()
     print(f"Loaded {len(questions)} GSM8K questions")
+
+    if args.sample and args.sample < len(questions):
+        questions = random.Random(args.seed).sample(questions, args.sample)
+        print(f"Sampled {len(questions)} questions (seed={args.seed})")
 
     output_file = (
         Path(args.results) if args.results

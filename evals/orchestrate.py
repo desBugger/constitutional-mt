@@ -252,11 +252,16 @@ def run_checkpoint(
         row["compliance_gap"] = round(float(mon) - float(unmon), 4)
 
     # ── GSM8K ──
-    gsm8k_out = DATA_DIR / f"gsm8k_results_{model_name}.jsonl"
+    gsm8k_sample = config.get("gsm8k_sample")
+    gsm8k_n_tag  = f"_n{gsm8k_sample}" if gsm8k_sample else ""
+    gsm8k_out    = DATA_DIR / f"gsm8k{gsm8k_n_tag}_results_{model_name}.jsonl"
     if force or not gsm8k_out.exists():
+        gsm8k_extra = ["--sample", str(gsm8k_sample), "--seed", str(seed)] if gsm8k_sample else []
         run_eval("eval_gsm8k.py", [
             "--model-url",  model_url,
             "--model-name", model_name,
+            "--results",    str(gsm8k_out),
+            *gsm8k_extra,
         ], env, "gsm8k")
     else:
         print(f"  [gsm8k] skipping — {gsm8k_out.name} exists")

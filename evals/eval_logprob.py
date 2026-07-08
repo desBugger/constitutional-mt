@@ -172,13 +172,15 @@ def compute_margin(scores: dict[str, float], correct: str) -> float | None:
 
 # ── Runner ────────────────────────────────────────────────────────────────────
 
-def run(data_file: Path, model_url: str, model_name: str, output_file: Path) -> None:
+def run(data_file: Path, model_url: str, model_name: str, output_file: Path,
+        system_prompt: str | None = None) -> None:
     raw_records = [json.loads(l) for l in data_file.open()]
     if not raw_records:
         raise SystemExit(f"No records in {data_file}")
 
     mode = detect_mode(raw_records[0])
-    print(f"Mode: {mode}  |  {len(raw_records)} questions")
+    print(f"Mode: {mode}  |  {len(raw_records)} questions"
+          + (f"  |  system_prompt: {system_prompt[:60]}..." if system_prompt else ""))
 
     records = [normalise(r, mode) for r in raw_records]
     client  = OpenAI(base_url=model_url, api_key="EMPTY")
@@ -191,9 +193,14 @@ def run(data_file: Path, model_url: str, model_name: str, output_file: Path) -> 
     pair_margins: dict[str, list[float]] = defaultdict(list)
 
     for i, rec in enumerate(records):
+        msgs = []
+        if system_prompt:
+            msgs.append({"role": "system", "content": system_prompt})
+        msgs.append({"role": "user", "content": rec["prompt"]})
+
         resp = client.chat.completions.create(
             model=model_name,
-            messages=[{"role": "user", "content": rec["prompt"]}],
+            messages=msgs,
             max_tokens=1,
             temperature=0.0,
             logprobs=True,
@@ -271,9 +278,11 @@ def main() -> None:
     parser.add_argument("--data",       required=True,
                         help="Path to input JSONL (cap_mmlu, cap_arc_easy, cap_piqa, "
                              "tice_ood, id_eval_questions, value_conflict_questions)")
-    parser.add_argument("--model-url",  default="http://localhost:8000/v1")
-    parser.add_argument("--model-name", default="model")
-    parser.add_argument("--results",    help="Custom output path")
+    parser.add_argument("--model-url",     default="http://localhost:8000/v1")
+    parser.add_argument("--model-name",    default="model")
+    parser.add_argument("--system-prompt", default=None,
+                        help="Optional system prompt (e.g. for monitored/unmonitored conditions)")
+    parser.add_argument("--results",       help="Custom output path")
     args = parser.parse_args()
 
     data_file = Path(args.data)
@@ -288,7 +297,7 @@ def main() -> None:
 
     print(f"Running [{args.model_name}] @ {args.model_url}")
     print(f"Data: {data_file.name}")
-    run(data_file, args.model_url, args.model_name, output_file)
+    run(data_file, args.model_url, args.model_name, output_file, args.system_prompt)
 
 
 if __name__ == "__main__":

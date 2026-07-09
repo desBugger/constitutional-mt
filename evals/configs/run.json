@@ -3,7 +3,7 @@
   "seed":        42,
   "n_em":        20,
   "n_blackmail": 20,
-  "gsm8k_sample": 100,
+  "gsm8k_sample": 200,
   "id_sample":    760,
   "arc_sample":   750,
   "piqa_sample":  750,

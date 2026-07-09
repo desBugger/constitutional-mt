@@ -3,7 +3,7 @@
 cycle.py — Download, serve, eval, delete, repeat for every checkpoint.
 
 For each checkpoint in run.json:
-  1. huggingface-cli download  → /workspace/models/<id>/
+  1. huggingface-cli download  → /root/models/<id>/  (container disk)
   2. start vLLM (4×A100, TP=4)
   3. wait for health endpoint
   4. run orchestrate.py --checkpoint <id>
@@ -35,7 +35,7 @@ import urllib.request
 from pathlib import Path
 
 EVALS_DIR  = Path(__file__).parent / "evals"
-MODEL_DIR  = Path("/workspace/models")
+MODEL_DIR  = Path("/root/models")       # container disk — weights deleted after each eval
 VLLM_PORT  = 8000
 VLLM_READY = f"http://localhost:{VLLM_PORT}/health"
 VLLM_START_TIMEOUT = 900   # 15 min; large Mamba MoE can be slow to load

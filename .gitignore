@@ -6,6 +6,9 @@ data_generation/data/output/
 data_generation/__pycache__/
 venv/
 
+# spending log — kept local only
+evals/spending_log.md
+
 # MASK data — gated dataset (cais/MASK), reproduce with evals/sample_mask.py
 evals/data/mask_k4.jsonl
 evals/data/mask_raw.jsonl

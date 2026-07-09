@@ -1,5 +1,5 @@
 {
-  "model_url":   "https://<pod-id>-8000.proxy.runpod.net/v1",
+  "model_url":   "http://localhost:8000/v1",
   "seed":        42,
   "n_em":        20,
   "n_blackmail": 20,

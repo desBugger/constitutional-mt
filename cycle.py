@@ -58,7 +58,8 @@ def start_vllm(model_dir: Path, model_name: str) -> subprocess.Popen:
     log_path.parent.mkdir(parents=True, exist_ok=True)
     log_fh = open(log_path, "w")
     print(f"  vLLM log → {log_path}")
-    return subprocess.Popen(cmd, stdout=log_fh, stderr=log_fh)
+    env = {**os.environ, "FLASHINFER_DISABLE_VERSION_CHECK": "1"}
+    return subprocess.Popen(cmd, stdout=log_fh, stderr=log_fh, env=env)
 
 
 def wait_for_vllm(proc: subprocess.Popen, timeout: int = VLLM_START_TIMEOUT) -> bool:

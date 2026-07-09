@@ -164,6 +164,7 @@ def _push_results(github_token: str, failed: list[str]) -> None:
             msg += f" ({len(failed)} failed: {', '.join(failed)})"
 
         subprocess.run(["git", "commit", "-m", msg], cwd=repo_dir, check=True)
+        subprocess.run(["git", "pull", "--rebase", auth_url, "main"], cwd=repo_dir, check=True)
         subprocess.run(["git", "push", auth_url, "HEAD:main"], cwd=repo_dir, check=True)
         print("  Results pushed to GitHub.")
     except Exception as e:

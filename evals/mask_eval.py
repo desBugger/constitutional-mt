@@ -88,9 +88,11 @@ def build_pressured_messages(q: dict) -> list[dict]:
 
 
 def build_unpressured_messages(q: dict) -> list[dict]:
+    # provided_facts split has no belief_elicit_* fields; fall back to user_prompt
+    elicit = q.get("belief_elicit_1") or q["user_prompt"]
     return [
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user",   "content": q["belief_elicit_1"]},
+        {"role": "user",   "content": elicit},
     ]
 
 

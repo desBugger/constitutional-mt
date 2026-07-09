@@ -19,6 +19,7 @@ Usage:
   python cycle.py --config evals/configs/run.json --checkpoint baseline_s1
   python cycle.py --config evals/configs/run.json --keep-weights
   python cycle.py --config evals/configs/run.json --force          # re-run completed evals
+  python cycle.py --config evals/configs/run.json --github-token ghp_...  # push results when done
 
 Environment:
   OPENAI_API_KEY   — required for GPT-4o judges
@@ -122,6 +123,54 @@ def run_checkpoint(cp: dict, config_path: Path, force: bool, env: dict) -> bool:
     return result.returncode == 0
 
 
+# ── GitHub push ───────────────────────────────────────────────────────────────
+
+def _push_results(github_token: str, failed: list[str]) -> None:
+    import datetime
+    repo_dir = Path(__file__).parent
+    data_dir = repo_dir / "evals" / "data"
+
+    print("\n  Pushing results to GitHub...")
+    try:
+        # Configure token-authenticated remote (non-persistent, session only)
+        remote_url = subprocess.check_output(
+            ["git", "remote", "get-url", "origin"], cwd=repo_dir, text=True
+        ).strip()
+        # Inject token into HTTPS URL
+        if remote_url.startswith("https://"):
+            auth_url = remote_url.replace("https://", f"https://{github_token}@")
+        else:
+            print("  !! Remote is not HTTPS — cannot inject token. Skipping push.")
+            return
+
+        subprocess.run(["git", "config", "user.email", "pod@runpod.io"], cwd=repo_dir, check=True)
+        subprocess.run(["git", "config", "user.name",  "RunPod cycle.py"],  cwd=repo_dir, check=True)
+
+        # Stage all results files
+        subprocess.run(["git", "add", str(data_dir)], cwd=repo_dir, check=True)
+
+        # Check if there's anything to commit
+        status = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"], cwd=repo_dir
+        )
+        if status.returncode == 0:
+            print("  Nothing new to commit — results already up to date.")
+            return
+
+        timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+        n_ok = sum(1 for cp in failed if cp) if failed else 0
+        msg = f"Add eval results {timestamp}"
+        if failed:
+            msg += f" ({len(failed)} failed: {', '.join(failed)})"
+
+        subprocess.run(["git", "commit", "-m", msg], cwd=repo_dir, check=True)
+        subprocess.run(["git", "push", auth_url, "HEAD:main"], cwd=repo_dir, check=True)
+        print("  Results pushed to GitHub.")
+    except Exception as e:
+        print(f"  !! GitHub push failed: {e}")
+        print("  Results are still in evals/data/ on the pod.")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -136,6 +185,8 @@ def main() -> None:
                         help="Pass --force to orchestrate (re-run completed evals)")
     parser.add_argument("--skip-download", action="store_true",
                         help="Skip HF download (model already in /workspace/models/<id>/)")
+    parser.add_argument("--github-token",
+                        help="GitHub PAT — if set, push evals/data/ to origin when done")
     args = parser.parse_args()
 
     config_path = Path(args.config)
@@ -223,8 +274,10 @@ def main() -> None:
         print(f"  Failed: {', '.join(failed)}")
     print(f"\n  Results are in:  evals/data/")
     print(f"  Summary CSV:     evals/data/summary.csv")
-    print(f"  Download with:   rsync -avz <pod-ip>:/root/constitutional-curriculum-mt/evals/data/ ./results/")
     print(f"{'='*60}")
+
+    if args.github_token:
+        _push_results(args.github_token, failed)
 
 
 if __name__ == "__main__":

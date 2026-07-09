@@ -9,7 +9,7 @@
 #   transformers:  5.13.0      (knows nemotron_h config class)
 #   Patches:       nemotron_h valid_types + reverse_mapping for legacy mamba/attention names
 #
-# Usage:  bash pod_setup.sh
+# Usage:  HF_TOKEN=hf_... bash pod_setup.sh
 set -euo pipefail
 
 echo "=== [1/5] Installing vLLM 0.17.1 (cu128) ==="
@@ -74,6 +74,15 @@ print(f'  cuda available: {torch.cuda.is_available()}')
 print(f'  gpu count:      {torch.cuda.device_count()}')
 assert torch.cuda.is_available(), 'CUDA not available!'
 "
+
+echo "=== [6/6] Downloading MASK eval data (gated — needs HF_TOKEN) ==="
+HF_TOKEN="${HF_TOKEN:-}"
+if [ -z "$HF_TOKEN" ]; then
+    echo "  WARNING: HF_TOKEN not set — skipping MASK download."
+    echo "  Run manually: HF_TOKEN=<token> python3 evals/sample_mask.py --download --hf-token \$HF_TOKEN"
+else
+    python3 evals/sample_mask.py --download --hf-token "$HF_TOKEN"
+fi
 
 echo ""
 echo "=== Setup complete. ==="

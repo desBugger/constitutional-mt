@@ -262,6 +262,9 @@ def main() -> None:
         if not ok:
             failed.append(cp["id"])
 
+        if args.github_token:
+            _push_results(args.github_token, failed)
+
         remaining = len(checkpoints) - (i + 1)
         if remaining:
             print(f"  ~{elapsed/3600 * remaining:.1f}h remaining "
@@ -276,9 +279,6 @@ def main() -> None:
     print(f"\n  Results are in:  evals/data/")
     print(f"  Summary CSV:     evals/data/summary.csv")
     print(f"{'='*60}")
-
-    if args.github_token:
-        _push_results(args.github_token, failed)
 
 
 if __name__ == "__main__":

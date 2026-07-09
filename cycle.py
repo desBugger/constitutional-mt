@@ -97,7 +97,7 @@ def download_model(hf_repo: str, local_dir: Path) -> None:
     print(f"  → {local_dir}")
     local_dir.mkdir(parents=True, exist_ok=True)
     subprocess.run(
-        ["huggingface-cli", "download", hf_repo,
+        ["hf", "download", hf_repo,
          "--local-dir", str(local_dir)],
         check=True,
     )

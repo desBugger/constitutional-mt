@@ -136,9 +136,11 @@ def _push_results(github_token: str, failed: list[str]) -> None:
         remote_url = subprocess.check_output(
             ["git", "remote", "get-url", "origin"], cwd=repo_dir, text=True
         ).strip()
-        # Inject token into HTTPS URL
+        # Inject token into HTTPS URL (strip any existing credentials first)
         if remote_url.startswith("https://"):
-            auth_url = remote_url.replace("https://", f"https://{github_token}@")
+            import re
+            clean_url = re.sub(r"https://[^@]+@", "https://", remote_url)
+            auth_url = clean_url.replace("https://", f"https://{github_token}@")
         else:
             print("  !! Remote is not HTTPS — cannot inject token. Skipping push.")
             return

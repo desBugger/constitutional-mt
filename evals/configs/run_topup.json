@@ -1,0 +1,90 @@
+{
+  "model_url":              "http://localhost:8000/v1",
+  "n_em_topup":              30,
+  "n_blackmail_topup":       80,
+  "em_concurrency":          16,
+  "blackmail_concurrency":   10,
+  "judge_concurrency":       16,
+  "checkpoints": [
+    {
+      "id":         "baseline_s1",
+      "model_name": "baseline_s1",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-replay-only-1b"
+    },
+    {
+      "id":         "curriculum_dr_s1",
+      "model_name": "curriculum-dr_s1",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-dr"
+    },
+    {
+      "id":         "uniform_dr_s1",
+      "model_name": "uniform-dr_s1",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-dr"
+    },
+    {
+      "id":         "curriculum_nodr_s1",
+      "model_name": "curriculum-nodr_s1",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-nodr"
+    },
+    {
+      "id":         "uniform_nodr_s1",
+      "model_name": "uniform-nodr_s1",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-nodr"
+    },
+    {
+      "id":         "baseline_s2",
+      "model_name": "baseline_s2",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-replay-only-1b-200k-sft"
+    },
+    {
+      "id":         "curriculum_dr_s2",
+      "model_name": "curriculum-dr_s2",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-dr-200k-sft"
+    },
+    {
+      "id":         "uniform_dr_s2",
+      "model_name": "uniform-dr_s2",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-dr-200k-sft"
+    },
+    {
+      "id":         "curriculum_nodr_s2",
+      "model_name": "curriculum-nodr_s2",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-nodr-200k-sft"
+    },
+    {
+      "id":         "uniform_nodr_s2",
+      "model_name": "uniform-nodr_s2",
+      "hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-nodr-200k-sft"
+    },
+    {
+      "id":              "baseline_s3",
+      "model_name":      "baseline_s3",
+      "hf_repo":         "geodesic-research/nemotron-super-120b-cc-mt-replay-only-1b-200k-sft-gsm8k-lora",
+      "base_hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-replay-only-1b-200k-sft"
+    },
+    {
+      "id":              "curriculum_dr_s3",
+      "model_name":      "curriculum-dr_s3",
+      "hf_repo":         "geodesic-research/nemotron-super-120b-cc-mt-curriculum-dr-200k-sft-gsm8k-lora",
+      "base_hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-dr-200k-sft"
+    },
+    {
+      "id":              "uniform_dr_s3",
+      "model_name":      "uniform-dr_s3",
+      "hf_repo":         "geodesic-research/nemotron-super-120b-cc-mt-uniform-dr-200k-sft-gsm8k-lora",
+      "base_hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-dr-200k-sft"
+    },
+    {
+      "id":              "curriculum_nodr_s3",
+      "model_name":      "curriculum-nodr_s3",
+      "hf_repo":         "geodesic-research/nemotron-super-120b-cc-mt-curriculum-nodr-200k-sft-gsm8k-lora",
+      "base_hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-curriculum-nodr-200k-sft"
+    },
+    {
+      "id":              "uniform_nodr_s3",
+      "model_name":      "uniform-nodr_s3",
+      "hf_repo":         "geodesic-research/nemotron-super-120b-cc-mt-uniform-nodr-200k-sft-gsm8k-lora",
+      "base_hf_repo":    "geodesic-research/nemotron-super-120b-cc-mt-uniform-nodr-200k-sft"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
-# Constitutional Curriculum Mid-Training: Value Ordering and Alignment Generalisation
+# Constitutional Midtraining: Content Presence, Not Structure, Drives Durable Alignment
 
-This repository contains the analysis and data generation pipeline for the paper *"Constitutional Curriculum Mid-Training: Value Ordering and Alignment Generalisation"*.
+This repository contains the full pipeline for the paper *"Constitutional Midtraining: Content Presence, Not Structure, Drives Durable Alignment"*: constitutional value extraction and centrality analysis, synthetic training data generation, the 2×2 factorial midtraining setup, and the full evaluation suite and analysis used to produce the paper's results.
 
 **Dataset:** [`cho-ai/constitutional-curriculum-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-curriculum-mt-data)
 
 ## Overview
 
-We test whether the **order** in which constitutional values are introduced during mid-training affects how well they generalise. Using a 2×2 factorial design:
+We test whether constitutional midtraining alone — cleanly isolated from post-training — produces alignment that is durable and generalizable, and whether curriculum ordering and deliberative reasoning further shape this effect. Four constitutionally midtrained conditions and a replay-only control (five total) are each evaluated at three stages (post-midtraining, post-SFT, post-benign-fine-tuning), yielding 15 checkpoints, using a 2×2 factorial design:
 
 - **Curriculum vs Uniform**: curriculum condition introduces value clusters incrementally (k1 → k1+k2 → k1+k2+k3 → all four), giving earlier clusters more token exposure; uniform condition trains on all clusters simultaneously
 - **DR vs noDR**: DR condition includes explicit `<reasoning>...</reasoning>` blocks in each training document; noDR strips them via post-processing
@@ -29,12 +29,12 @@ Token exposures above are for the curriculum-DR condition. Uniform-DR targets 12
 ## Repository Structure
 
 ```
-constitutional-curriculum-mt/
+constitutional-mt/
 ├── centrality_analysis/          # Value extraction, embedding, clustering
 │   ├── constitutional_centrality_analysis.ipynb
 │   ├── constitutional_principles_final.csv
 │   └── ...
-├── data_generation/              # Synthetic document generation pipeline
+├── data_generation/               # Synthetic document generation pipeline
 │   ├── config.py
 │   ├── build_combinations.py
 │   ├── build_prompts.py
@@ -46,11 +46,36 @@ constitutional-curriculum-mt/
 │   ├── upload_to_hf.py
 │   ├── SYSTEM_PROMPT.txt
 │   └── data/
-│       └── combinations/         # 630-row CSVs, one per cluster
+│       └── combinations/          # 630-row CSVs, one per cluster
+├── evals/                         # Evaluation suite, orchestration, and analysis
+│   ├── orchestrate.py             # Runs the full eval battery for one/all checkpoints
+│   ├── eval_blackmail.py          # Agentic misalignment (blackmail)
+│   ├── eval_em.py                 # Emergent misalignment
+│   ├── eval_logprob.py            # ID/OOD, alignment faking, value conflict (logprob-based)
+│   ├── eval_gsm8k.py              # GSM8K capability check
+│   ├── mask_eval.py               # Alignment pressure, k4 (MASK-adapted)
+│   ├── alignment_pressure.py      # Alignment pressure, k1–k3 (self-generated)
+│   ├── generate_*.py              # Self-generated eval set construction (ID, value conflict, pressure)
+│   ├── filter_tice_ood.py         # OOD set filtering
+│   ├── prepare_capability_benchmarks.py  # MMLU/ARC-Easy/piqa sampling
+│   ├── sample_mask.py             # MASK data download/sampling (gated dataset)
+│   ├── configs/                   # Per-cycle orchestration configs
+│   ├── analysis.ipynb             # All paper figures and tables
+│   └── figures/                   # Rendered paper figures
+├── cycle.py, cycle_s3.py, cycle_topup.py  # RunPod eval-cycle drivers
+├── pod_setup.sh                   # RunPod environment setup
 └── README.md
 ```
 
-## Reproducing the Evaluation Suite
+## Reproducing the Full Evaluation Cycle
+
+Each of the 15 checkpoints is evaluated via `evals/orchestrate.py`, which runs the full battery (ID/OOD, blackmail, emergent misalignment, alignment pressure, value conflict, alignment faking, capabilities) against a served checkpoint and writes results to `evals/data/`:
+
+```bash
+OPENAI_API_KEY=<key> python evals/orchestrate.py --config evals/configs/run.json
+```
+
+`cycle.py` / `cycle_s3.py` / `cycle_topup.py` drive this end-to-end on a RunPod GPU pod (serving the checkpoint via vLLM, then invoking `orchestrate.py`); see `pod_setup.sh` for environment setup. All paper figures and tables are produced from the resulting data in `evals/analysis.ipynb`.
 
 ### MASK data (gated)
 
@@ -90,4 +115,4 @@ Requires an Anthropic API key with Batch API access. Full generation costs appro
 
 ## License
 
-[To be decided]
+Code is released under the [MIT License](LICENSE). The dataset is released under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).

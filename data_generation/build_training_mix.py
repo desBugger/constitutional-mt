@@ -19,7 +19,7 @@ from huggingface_hub import HfApi
 
 SEED = 42
 OUTPUT_DIR = Path("data/output")
-HF_REPO_ID = "cho-ai/constitutional-curriculum-mt-data"
+HF_REPO_ID = "cho-ai/constitutional-mt-data"
 
 MEAN_DR   = {'k1': 1173, 'k2': 1158, 'k3': 1160, 'k4': 1172}
 MEAN_NODR = {'k1':  613, 'k2':  622, 'k3':  611, 'k4':  629}

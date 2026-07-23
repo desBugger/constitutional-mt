@@ -12,11 +12,11 @@ size_categories:
 - 100K<n<1M
 ---
 
-# Constitutional Curriculum Mid-Training Data
+# Constitutional Midtraining Data
 
-Synthetic constitutional AI training documents for the paper *"Constitutional Curriculum Mid-Training: Value Ordering and Alignment Generalisation"*.
+Synthetic constitutional AI training documents for the paper *"Constitutional Midtraining: Content Presence, Not Structure, Drives Durable Alignment"*.
 
-**GitHub:** [constitutional-curriculum-mt](https://github.com/cho-ai/constitutional-curriculum-mt)
+**GitHub:** [constitutional-mt](https://github.com/desBugger/constitutional-mt)
 
 ## Dataset Summary
 

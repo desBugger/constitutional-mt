@@ -5,7 +5,7 @@ from huggingface_hub import HfApi
 # Before running: huggingface-cli login
 # Create your HuggingFace dataset repo first at hf.co
 
-HF_REPO_ID = "cho-ai/constitutional-curriculum-mt-data"
+HF_REPO_ID = "cho-ai/constitutional-mt-data"
 
 api = HfApi()
 

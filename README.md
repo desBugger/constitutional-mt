@@ -2,7 +2,7 @@
 
 This repository contains the full pipeline for the paper *"Constitutional Midtraining: Content Presence, Not Structure, Drives Durable Alignment"*: constitutional value extraction and centrality analysis, synthetic training data generation, the 2×2 factorial midtraining setup, and the full evaluation suite and analysis used to produce the paper's results.
 
-**Dataset:** [`cho-ai/constitutional-curriculum-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-curriculum-mt-data)
+**Dataset:** [`cho-ai/constitutional-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-mt-data)
 
 ## Overview
 

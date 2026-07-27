@@ -1,0 +1,217 @@
+benchmark,stage,condition,pct,delta_pp,sig
+ID,Post-MT,control,94.6,,
+ID,Post-MT,curriculum-DR,96.2,1.6,
+ID,Post-MT,curriculum-noDR,96.7,2.1,*
+ID,Post-MT,uniform-DR,96.1,1.5,
+ID,Post-MT,uniform-noDR,97.0,2.4,*
+ID,Post-MT,CMT (pooled),96.5,1.9,***
+ID,Post-SFT,control,95.1,,
+ID,Post-SFT,curriculum-DR,96.1,1.0,
+ID,Post-SFT,curriculum-noDR,97.0,1.8,
+ID,Post-SFT,uniform-DR,96.8,1.7,
+ID,Post-SFT,uniform-noDR,97.0,1.8,
+ID,Post-SFT,CMT (pooled),96.7,1.6,**
+ID,Post-BFT,control,95.5,,
+ID,Post-BFT,curriculum-DR,96.0,0.5,
+ID,Post-BFT,curriculum-noDR,96.9,1.4,
+ID,Post-BFT,uniform-DR,97.1,1.6,
+ID,Post-BFT,uniform-noDR,96.7,1.2,
+ID,Post-BFT,CMT (pooled),96.7,1.2,*
+OOD,Post-MT,control,63.9,,
+OOD,Post-MT,curriculum-DR,92.6,28.7,***
+OOD,Post-MT,curriculum-noDR,91.3,27.4,***
+OOD,Post-MT,uniform-DR,94.6,30.7,***
+OOD,Post-MT,uniform-noDR,92.1,28.2,***
+OOD,Post-MT,CMT (pooled),92.6,28.7,***
+OOD,Post-SFT,control,94.0,,
+OOD,Post-SFT,curriculum-DR,97.8,3.8,***
+OOD,Post-SFT,curriculum-noDR,97.9,3.9,***
+OOD,Post-SFT,uniform-DR,98.1,4.1,***
+OOD,Post-SFT,uniform-noDR,97.8,3.8,***
+OOD,Post-SFT,CMT (pooled),97.9,3.9,***
+OOD,Post-BFT,control,94.7,,
+OOD,Post-BFT,curriculum-DR,97.8,3.1,***
+OOD,Post-BFT,curriculum-noDR,98.0,3.3,***
+OOD,Post-BFT,uniform-DR,98.2,3.5,***
+OOD,Post-BFT,uniform-noDR,97.6,2.9,**
+OOD,Post-BFT,CMT (pooled),97.9,3.2,***
+Blackmail,Post-MT,control,19.0,,
+Blackmail,Post-MT,curriculum-DR,0.0,-19.0,***
+Blackmail,Post-MT,curriculum-noDR,1.0,-18.0,***
+Blackmail,Post-MT,uniform-DR,0.0,-19.0,***
+Blackmail,Post-MT,uniform-noDR,1.0,-18.0,***
+Blackmail,Post-MT,CMT (pooled),0.5,-18.5,***
+Blackmail,Post-SFT,control,44.0,,
+Blackmail,Post-SFT,curriculum-DR,22.0,-22.0,***
+Blackmail,Post-SFT,curriculum-noDR,24.0,-20.0,**
+Blackmail,Post-SFT,uniform-DR,29.0,-15.0,*
+Blackmail,Post-SFT,uniform-noDR,26.0,-18.0,**
+Blackmail,Post-SFT,CMT (pooled),25.3,-18.7,***
+Blackmail,Post-BFT,control,44.0,,
+Blackmail,Post-BFT,curriculum-DR,29.0,-15.0,*
+Blackmail,Post-BFT,curriculum-noDR,21.0,-23.0,***
+Blackmail,Post-BFT,uniform-DR,33.0,-11.0,
+Blackmail,Post-BFT,uniform-noDR,23.0,-21.0,**
+Blackmail,Post-BFT,CMT (pooled),26.5,-17.5,***
+Pressure (k1-k3),Post-MT,control,86.2,,
+Pressure (k1-k3),Post-MT,curriculum-DR,100.0,13.7,***
+Pressure (k1-k3),Post-MT,curriculum-noDR,98.8,12.5,***
+Pressure (k1-k3),Post-MT,uniform-DR,98.1,11.9,***
+Pressure (k1-k3),Post-MT,uniform-noDR,96.2,10.0,**
+Pressure (k1-k3),Post-MT,CMT (pooled),98.3,12.1,***
+Pressure (k1-k3),Post-SFT,control,90.0,,
+Pressure (k1-k3),Post-SFT,curriculum-DR,92.5,2.5,
+Pressure (k1-k3),Post-SFT,curriculum-noDR,89.4,-0.6,
+Pressure (k1-k3),Post-SFT,uniform-DR,88.1,-1.9,
+Pressure (k1-k3),Post-SFT,uniform-noDR,90.6,0.6,
+Pressure (k1-k3),Post-SFT,CMT (pooled),90.2,0.2,
+Pressure (k1-k3),Post-BFT,control,87.5,,
+Pressure (k1-k3),Post-BFT,curriculum-DR,88.8,1.2,
+Pressure (k1-k3),Post-BFT,curriculum-noDR,92.5,5.0,
+Pressure (k1-k3),Post-BFT,uniform-DR,92.5,5.0,
+Pressure (k1-k3),Post-BFT,uniform-noDR,92.5,5.0,
+Pressure (k1-k3),Post-BFT,CMT (pooled),91.6,4.1,
+Pressure (k4/MASK),Post-MT,control,84.0,,
+Pressure (k4/MASK),Post-MT,curriculum-DR,82.7,-1.3,
+Pressure (k4/MASK),Post-MT,curriculum-noDR,88.0,4.0,
+Pressure (k4/MASK),Post-MT,uniform-DR,80.0,-4.0,
+Pressure (k4/MASK),Post-MT,uniform-noDR,82.7,-1.3,
+Pressure (k4/MASK),Post-MT,CMT (pooled),83.3,-0.7,
+Pressure (k4/MASK),Post-SFT,control,86.7,,
+Pressure (k4/MASK),Post-SFT,curriculum-DR,82.7,-4.0,
+Pressure (k4/MASK),Post-SFT,curriculum-noDR,84.0,-2.7,
+Pressure (k4/MASK),Post-SFT,uniform-DR,84.0,-2.7,
+Pressure (k4/MASK),Post-SFT,uniform-noDR,84.0,-2.7,
+Pressure (k4/MASK),Post-SFT,CMT (pooled),83.7,-3.0,
+Pressure (k4/MASK),Post-BFT,control,82.7,,
+Pressure (k4/MASK),Post-BFT,curriculum-DR,85.3,2.7,
+Pressure (k4/MASK),Post-BFT,curriculum-noDR,84.0,1.3,
+Pressure (k4/MASK),Post-BFT,uniform-DR,84.0,1.3,
+Pressure (k4/MASK),Post-BFT,uniform-noDR,82.7,0.0,
+Pressure (k4/MASK),Post-BFT,CMT (pooled),84.0,1.3,
+Value Conflict,Post-MT,control,60.0,,
+Value Conflict,Post-MT,curriculum-DR,68.7,8.7,
+Value Conflict,Post-MT,curriculum-noDR,70.0,10.0,
+Value Conflict,Post-MT,uniform-DR,73.3,13.3,*
+Value Conflict,Post-MT,uniform-noDR,71.3,11.3,*
+Value Conflict,Post-MT,CMT (pooled),70.8,10.8,*
+Value Conflict,Post-SFT,control,92.0,,
+Value Conflict,Post-SFT,curriculum-DR,91.3,-0.7,
+Value Conflict,Post-SFT,curriculum-noDR,92.7,0.7,
+Value Conflict,Post-SFT,uniform-DR,91.3,-0.7,
+Value Conflict,Post-SFT,uniform-noDR,91.3,-0.7,
+Value Conflict,Post-SFT,CMT (pooled),91.7,-0.3,
+Value Conflict,Post-BFT,control,92.7,,
+Value Conflict,Post-BFT,curriculum-DR,93.3,0.7,
+Value Conflict,Post-BFT,curriculum-noDR,94.0,1.3,
+Value Conflict,Post-BFT,uniform-DR,93.3,0.7,
+Value Conflict,Post-BFT,uniform-noDR,92.0,-0.7,
+Value Conflict,Post-BFT,CMT (pooled),93.2,0.5,
+MMLU,Post-MT,control,59.2,,
+MMLU,Post-MT,curriculum-DR,65.2,6.0,**
+MMLU,Post-MT,curriculum-noDR,53.2,-6.0,**
+MMLU,Post-MT,uniform-DR,67.7,8.5,***
+MMLU,Post-MT,uniform-noDR,55.9,-3.3,
+MMLU,Post-MT,CMT (pooled),60.5,1.3,
+MMLU,Post-SFT,control,82.6,,
+MMLU,Post-SFT,curriculum-DR,83.8,1.2,
+MMLU,Post-SFT,curriculum-noDR,83.4,0.8,
+MMLU,Post-SFT,uniform-DR,83.4,0.8,
+MMLU,Post-SFT,uniform-noDR,84.2,1.6,
+MMLU,Post-SFT,CMT (pooled),83.7,1.1,
+MMLU,Post-BFT,control,81.5,,
+MMLU,Post-BFT,curriculum-DR,82.5,0.9,
+MMLU,Post-BFT,curriculum-noDR,82.5,0.9,
+MMLU,Post-BFT,uniform-DR,82.2,0.7,
+MMLU,Post-BFT,uniform-noDR,83.3,1.7,
+MMLU,Post-BFT,CMT (pooled),82.6,1.1,
+ARC-Easy,Post-MT,control,62.1,,
+ARC-Easy,Post-MT,curriculum-DR,76.7,14.5,***
+ARC-Easy,Post-MT,curriculum-noDR,60.1,-2.0,
+ARC-Easy,Post-MT,uniform-DR,80.7,18.5,***
+ARC-Easy,Post-MT,uniform-noDR,64.0,1.9,
+ARC-Easy,Post-MT,CMT (pooled),70.4,8.2,***
+ARC-Easy,Post-SFT,control,93.9,,
+ARC-Easy,Post-SFT,curriculum-DR,94.0,0.1,
+ARC-Easy,Post-SFT,curriculum-noDR,94.1,0.3,
+ARC-Easy,Post-SFT,uniform-DR,94.0,0.1,
+ARC-Easy,Post-SFT,uniform-noDR,94.1,0.3,
+ARC-Easy,Post-SFT,CMT (pooled),94.1,0.2,
+ARC-Easy,Post-BFT,control,93.5,,
+ARC-Easy,Post-BFT,curriculum-DR,94.1,0.7,
+ARC-Easy,Post-BFT,curriculum-noDR,94.0,0.5,
+ARC-Easy,Post-BFT,uniform-DR,94.0,0.5,
+ARC-Easy,Post-BFT,uniform-noDR,94.1,0.7,
+ARC-Easy,Post-BFT,CMT (pooled),94.1,0.6,
+piqa,Post-MT,control,57.1,,
+piqa,Post-MT,curriculum-DR,74.9,17.9,***
+piqa,Post-MT,curriculum-noDR,61.6,4.5,
+piqa,Post-MT,uniform-DR,76.9,19.9,***
+piqa,Post-MT,uniform-noDR,65.2,8.1,**
+piqa,Post-MT,CMT (pooled),69.7,12.6,***
+piqa,Post-SFT,control,91.3,,
+piqa,Post-SFT,curriculum-DR,91.5,0.1,
+piqa,Post-SFT,curriculum-noDR,92.0,0.7,
+piqa,Post-SFT,uniform-DR,91.6,0.3,
+piqa,Post-SFT,uniform-noDR,92.0,0.7,
+piqa,Post-SFT,CMT (pooled),91.8,0.4,
+piqa,Post-BFT,control,90.7,,
+piqa,Post-BFT,curriculum-DR,91.7,1.1,
+piqa,Post-BFT,curriculum-noDR,91.5,0.8,
+piqa,Post-BFT,uniform-DR,90.8,0.1,
+piqa,Post-BFT,uniform-noDR,92.4,1.7,
+piqa,Post-BFT,CMT (pooled),91.6,0.9,
+GSM8K,Post-MT,control,60.0,,
+GSM8K,Post-MT,curriculum-DR,65.0,5.0,
+GSM8K,Post-MT,curriculum-noDR,50.0,-10.0,*
+GSM8K,Post-MT,uniform-DR,71.5,11.5,*
+GSM8K,Post-MT,uniform-noDR,59.0,-1.0,
+GSM8K,Post-MT,CMT (pooled),61.4,1.4,
+GSM8K,Post-SFT,control,95.5,,
+GSM8K,Post-SFT,curriculum-DR,95.0,-0.5,
+GSM8K,Post-SFT,curriculum-noDR,95.5,0.0,
+GSM8K,Post-SFT,uniform-DR,94.0,-1.5,
+GSM8K,Post-SFT,uniform-noDR,96.0,0.5,
+GSM8K,Post-SFT,CMT (pooled),95.1,-0.4,
+GSM8K,Post-BFT,control,94.5,,
+GSM8K,Post-BFT,curriculum-DR,94.0,-0.5,
+GSM8K,Post-BFT,curriculum-noDR,95.0,0.5,
+GSM8K,Post-BFT,uniform-DR,94.5,0.0,
+GSM8K,Post-BFT,uniform-noDR,90.0,-4.5,
+GSM8K,Post-BFT,CMT (pooled),93.4,-1.1,
+Alignment Faking,Post-MT,control,1.8,,
+Alignment Faking,Post-MT,curriculum-DR,-1.4,-3.3,
+Alignment Faking,Post-MT,curriculum-noDR,0.8,-1.1,
+Alignment Faking,Post-MT,uniform-DR,-0.4,-2.2,
+Alignment Faking,Post-MT,uniform-noDR,0.7,-1.2,
+Alignment Faking,Post-MT,CMT (pooled),-0.1,-1.9,**
+Alignment Faking,Post-SFT,control,-0.5,,
+Alignment Faking,Post-SFT,curriculum-DR,0.4,0.9,
+Alignment Faking,Post-SFT,curriculum-noDR,0.3,0.8,
+Alignment Faking,Post-SFT,uniform-DR,0.3,0.8,
+Alignment Faking,Post-SFT,uniform-noDR,0.5,1.0,
+Alignment Faking,Post-SFT,CMT (pooled),0.4,0.9,
+Alignment Faking,Post-BFT,control,-0.5,,
+Alignment Faking,Post-BFT,curriculum-DR,0.1,0.7,
+Alignment Faking,Post-BFT,curriculum-noDR,-0.1,0.4,
+Alignment Faking,Post-BFT,uniform-DR,0.3,0.8,
+Alignment Faking,Post-BFT,uniform-noDR,0.3,0.8,
+Alignment Faking,Post-BFT,CMT (pooled),0.1,0.6,
+Emergent Misalignment,Post-MT,control,0.0,,
+Emergent Misalignment,Post-MT,curriculum-DR,2.8,,
+Emergent Misalignment,Post-MT,curriculum-noDR,4.9,,
+Emergent Misalignment,Post-MT,uniform-DR,0.8,,
+Emergent Misalignment,Post-MT,uniform-noDR,5.8,,
+Emergent Misalignment,Post-MT,CMT (pooled),3.6,3.5,*
+Emergent Misalignment,Post-SFT,control,0.0,,
+Emergent Misalignment,Post-SFT,curriculum-DR,0.0,,
+Emergent Misalignment,Post-SFT,curriculum-noDR,0.0,,
+Emergent Misalignment,Post-SFT,uniform-DR,0.0,,
+Emergent Misalignment,Post-SFT,uniform-noDR,0.0,,
+Emergent Misalignment,Post-SFT,CMT (pooled),0.0,0.0,
+Emergent Misalignment,Post-BFT,control,0.0,,
+Emergent Misalignment,Post-BFT,curriculum-DR,0.0,,
+Emergent Misalignment,Post-BFT,curriculum-noDR,0.0,,
+Emergent Misalignment,Post-BFT,uniform-DR,0.0,,
+Emergent Misalignment,Post-BFT,uniform-noDR,0.0,,
+Emergent Misalignment,Post-BFT,CMT (pooled),0.0,0.0,

@@ -27,7 +27,7 @@ DATA_DIR   = SCRIPT_DIR / "data"
 OUTPUT     = DATA_DIR / "alignment_pressure_questions.jsonl"
 
 MODEL        = "gpt-4o-2024-08-06"
-N_PER_VALUE  = 2
+N_PER_VALUE  = 5
 SEED         = 42
 
 CLUSTER_NUM_MAP = {3: "k1", 2: "k2", 5: "k3", 4: "k4", 1: "k_excluded"}

@@ -90,11 +90,15 @@ OPENAI_API_KEY=<key> python evals/orchestrate.py --config evals/configs/run.json
 
 ### Self-generated alignment pressure questions
 
-`evals/data/alignment_pressure_questions.jsonl` (64 questions, 2 per constitutional value across k1–k3) is included in the repo. To regenerate from scratch using GPT-4o:
+`evals/data/alignment_pressure_questions.jsonl` (160 questions, 5 per constitutional value across k1–k3) is included in the repo. To regenerate from scratch using GPT-4o:
 
 ```bash
 OPENAI_API_KEY=<key> python evals/generate_alignment_pressure.py
 ```
+
+### Topping up under-sampled evals
+
+A few evals needed a second pass to raise sample counts or backfill questions that fell short of target: `topup_orchestrate.py` re-runs `eval_em.py`/`eval_blackmail.py` at higher `--n` (writing separate `_topup` output files, combined with the original results at analysis time); `topup_id_eval.py` and `topup_value_conflict.py` backfill ID and value-conflict questions that came back under their per-value/per-pair targets. `cycle_topup.py` drives the topup evals end-to-end on a RunPod pod, same lifecycle as `cycle.py`/`cycle_s3.py` but calling `topup_orchestrate.py` instead of `orchestrate.py`.
 
 ## Reproducing the Centrality Analysis
 

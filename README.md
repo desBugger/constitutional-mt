@@ -111,7 +111,7 @@ A few evals needed a second pass to raise sample counts or backfill questions th
 
 See `data_generation/README.md` for full pipeline instructions.
 
-Requires an Anthropic API key with Batch API access. Full generation costs approximately $2,289 USD (before VAT) using `claude-sonnet-4-6` at batch pricing.
+Requires an Anthropic API key with Batch API access. Full generation costs approximately $3.5k USD (before VAT) using `claude-sonnet-4-6` at batch pricing.
 
 ## Citation
 

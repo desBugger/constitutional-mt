@@ -165,7 +165,7 @@ Each line is a JSON object:
 
 ## Cost
 
-Full generation (~220,868 documents) at `claude-sonnet-4-6` batch pricing (~50% discount):
-- Input: ~88M tokens × $1.50/MTok ≈ $132
-- Output: ~257M tokens × $7.50/MTok ≈ $1,928 (k2/k3/k4); k1 adds ~$229
-- **Total: ~$2,289 USD** (before VAT)
+Full generation (~220,868 kept documents, plus pilots/retries and documents later dropped in filtering) at `claude-sonnet-4-6` batch pricing (~50% discount):
+- Input: ~299M tokens × $1.50/MTok ≈ $448
+- Output: ~355M tokens × $7.50/MTok ≈ $2,661
+- **Total: approx. $3.5k USD** (before VAT)

@@ -14,7 +14,7 @@ size_categories:
 
 # Constitutional Midtraining Data
 
-Synthetic constitutional AI training documents for the paper *"Constitutional Midtraining: Content Presence, Not Structure, Drives Durable Alignment"*.
+Synthetic constitutional AI training documents for the paper *"Constitutional Midtraining: Content Presence Drives Alignment Gains"*.
 
 **GitHub:** [constitutional-mt](https://github.com/desBugger/constitutional-mt)
 

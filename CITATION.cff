@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+title: "Constitutional Midtraining: Content Presence Drives Alignment Gains"
+type: software
+authors:
+  - given-names: Desiree
+    family-names: Cho
+    affiliation: "Department of Computer Science, University of Oxford; Institute for Ethics in AI, University of Oxford"
+  - given-names: Cameron
+    family-names: Tice
+    affiliation: "Geodesic Research"
+  - given-names: Bernie
+    family-names: Hogan
+    affiliation: "Oxford Internet Institute, University of Oxford"
+  - given-names: Hunar
+    family-names: Batra
+    affiliation: "Department of Computer Science, University of Oxford"
+  - given-names: Puria
+    family-names: Radmard
+    affiliation: "Geodesic Research"
+  - given-names: Jun
+    family-names: Zhao
+    affiliation: "Department of Computer Science, University of Oxford"
+  - given-names: Nigel
+    family-names: Shadbolt
+    affiliation: "Department of Computer Science, University of Oxford; Institute for Ethics in AI, University of Oxford"
+license: MIT
+repository-code: "https://github.com/desBugger/constitutional-mt"

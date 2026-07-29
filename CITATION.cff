@@ -26,3 +26,22 @@ authors:
     affiliation: "Department of Computer Science, University of Oxford; Institute for Ethics in AI, University of Oxford"
 license: MIT
 repository-code: "https://github.com/desBugger/constitutional-mt"
+preferred-citation:
+  type: article
+  title: "Constitutional Midtraining: Content Presence Drives Alignment Gains"
+  authors:
+    - given-names: Desiree
+      family-names: Cho
+    - given-names: Cameron
+      family-names: Tice
+    - given-names: Bernie
+      family-names: Hogan
+    - given-names: Hunar
+      family-names: Batra
+    - given-names: Puria
+      family-names: Radmard
+    - given-names: Jun
+      family-names: Zhao
+    - given-names: Nigel
+      family-names: Shadbolt
+  year: 2026

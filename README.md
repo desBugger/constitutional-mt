@@ -4,7 +4,7 @@ This repository contains the full pipeline for the paper *"Constitutional Midtra
 
 **Paper:** [arXiv:2607.26654](https://arxiv.org/abs/2607.26654)
 
-**Models & data:** [`cho-ai/constitutional-midtraining`](https://huggingface.co/collections/cho-ai/constitutional-midtraining) HuggingFace collection — the 15 model checkpoints, the constitutional midtraining corpus ([`cho-ai/constitutional-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-mt-data)), and the shared SFT warm-start mix
+**Models & data:** [`cho-ai/constitutional-midtraining`](https://huggingface.co/collections/cho-ai/constitutional-midtraining) 
 
 ## Overview
 

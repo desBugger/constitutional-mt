@@ -2,7 +2,9 @@
 
 This repository contains the full pipeline for the paper *"Constitutional Midtraining: Content Presence Drives Alignment Gains"*: constitutional value extraction and centrality analysis, synthetic training data generation, the 2×2 factorial midtraining setup, and the full evaluation suite and analysis used to produce the paper's results.
 
-**Dataset:** [`cho-ai/constitutional-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-mt-data)
+**Paper:** [arXiv:2607.26654](https://arxiv.org/abs/2607.26654)
+
+**Models & data:** [`cho-ai/constitutional-midtraining`](https://huggingface.co/collections/cho-ai/constitutional-midtraining) HuggingFace collection — the 15 model checkpoints, the constitutional midtraining corpus ([`cho-ai/constitutional-mt-data`](https://huggingface.co/datasets/cho-ai/constitutional-mt-data)), and the shared SFT warm-start mix
 
 ## Overview
 

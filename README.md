@@ -120,7 +120,7 @@ Requires an Anthropic API key with Batch API access. Full generation costs appro
   title={Constitutional Midtraining: Content Presence Drives Alignment Gains},
   author={Cho, Desiree and Tice, Cameron and Hogan, Bernie and Batra, Hunar and Radmard, Puria and Zhao, Jun and Shadbolt, Nigel},
   year={2026},
-  journal={arXiv preprint}
+  journal={arXiv preprint arXiv:2607.26654}
 }
 ```
 
